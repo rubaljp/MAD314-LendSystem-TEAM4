@@ -30,7 +30,7 @@ public class SignUp extends AppCompatActivity {
         mEmail=findViewById(R.id.editTextUsername);
         mPassword=findViewById(R.id.editTextPassword);
         mSignUp=findViewById(R.id.buttonSign);
-        mLogin=findViewById(R.id.buttonLogin);
+        mLogin=findViewById(R.id.buttonLog);
 
         fAuth=FirebaseAuth.getInstance();
         progressBar=findViewById(R.id.progressBar);

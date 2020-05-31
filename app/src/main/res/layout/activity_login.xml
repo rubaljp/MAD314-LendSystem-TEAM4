@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/blur"
+
     android:label="Login"
     tools:context=".LoginActivity">
 
@@ -84,28 +84,23 @@
         app:layout_constraintVertical_bias="0.073" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="138dp"
-        android:layout_marginLeft="138dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="138dp"
-        android:layout_marginRight="138dp"
-        android:layout_marginBottom="98dp"
-
-        android:clickable="true"
-        android:text="REGISTER?"
-        android:textAllCaps="false"
+        android:layout_marginStart="177dp"
+        android:layout_marginLeft="177dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="175dp"
+        android:layout_marginRight="175dp"
+        android:layout_marginBottom="114dp"
+        android:text="NEW USER? REGISTER..."
         android:textColor="#FF9800"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:fontFamily="sans-serif-condensed-medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
-
+        app:layout_constraintTop_toBottomOf="@+id/buttonLog" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
