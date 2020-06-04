@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         mEmail=findViewById(R.id.usernameLogin);
         mPassword=findViewById(R.id.passwordLogin);
         firebaseAuth=FirebaseAuth.getInstance();
-        mLoginBtn=findViewById(R.id.buttonLog);
+        mLoginBtn=findViewById(R.id.buttonLogin);
         mCreate=(TextView) findViewById(R.id.tvSign);
 
         mCreate.setOnClickListener(new View.OnClickListener() {

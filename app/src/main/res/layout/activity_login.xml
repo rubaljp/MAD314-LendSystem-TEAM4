@@ -106,12 +106,13 @@
         />
 
     <TextView
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
+        android:id="@+id/tvSign"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Don't have an account? Signup"/>
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Don't have an account? Signup"
+        android:textColor="@color/black" />
 
     <TextView
         android:textColor="@color/red"

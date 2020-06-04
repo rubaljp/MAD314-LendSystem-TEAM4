@@ -27,13 +27,13 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        mEmail=findViewById(R.id.editTextUsername);
-        mPassword=findViewById(R.id.editTextPassword);
-        mSignUp=findViewById(R.id.buttonSign);
-        mLogin=findViewById(R.id.buttonLog);
+        mEmail=findViewById(R.id.usernameLogin);
+        mPassword=findViewById(R.id.password);
+        mSignUp=findViewById(R.id.buttonLogin);
+        mLogin=findViewById(R.id.buttonLogin);
 
         fAuth=FirebaseAuth.getInstance();
-        progressBar=findViewById(R.id.progressBar);
+     //   progressBar=findViewById(R.id.progressBar);
 
 
 
