@@ -5,4 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="gray">#D9828282</color>
     <color name="black">#000000</color>
-    <color name="red">#F01D0A</color></resources>
+    <color name="red">#F01D0A</color>
+    <color name="white">#FDFCFC</color>
+</resources>
