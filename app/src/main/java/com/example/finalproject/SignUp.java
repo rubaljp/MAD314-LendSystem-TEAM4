@@ -19,74 +19,21 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUp extends AppCompatActivity {
-    EditText mEmail,mPassword;
-    Button mSignUp,mLogin;
-    FirebaseAuth fAuth;
-    ProgressBar progressBar;
+
+
+    Button buttonsubmit,cancal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        mEmail=findViewById(R.id.usernameLogin);
-        mPassword=findViewById(R.id.password);
-        mSignUp=findViewById(R.id.buttonLogin);
-        mLogin=findViewById(R.id.buttonLogin);
+        buttonsubmit=findViewById(R.id.buttonsubmit);
+        cancal=findViewById(R.id.cancal);
 
-        fAuth=FirebaseAuth.getInstance();
-     //   progressBar=findViewById(R.id.progressBar);
-
-
-
-
-
-        mLogin.setOnClickListener(new View.OnClickListener() {
+        cancal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                 finish();
             }
         });
-        mSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String email=mEmail.getText().toString().trim();
-                String password=mPassword.getText().toString().trim();
-
-                if (TextUtils.isEmpty(email)){
-                    mEmail.setError("Email is required");
-                    return;
-                }
-                if (TextUtils.isEmpty(password)){
-                    mPassword.setError("Password is required");
-                    return;
-                }
-
-                if (password.length()<6){
-                    mPassword.setError("Password must be greater then 6 characters");
-                    return;
-                }
-                progressBar.setVisibility(View.VISIBLE);
-
-               fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(SignUp.this,"user created",Toast.LENGTH_SHORT).show();
-                         //   startActivity(new Intent(getApplicationContext(),EmptyPage.class));
-                        }
-                        else {
-                            Toast.makeText(SignUp.this,"error !"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });      
-
-
-
-            }
-        });
-
-
-
     }
 }

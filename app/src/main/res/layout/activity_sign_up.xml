@@ -160,7 +160,7 @@
             android:layout_gravity="center|left"
             android:gravity="center"
             android:layout_marginRight="20dp"
-            android:id="@+id/buttonLogin"
+            android:id="@+id/buttonsubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
