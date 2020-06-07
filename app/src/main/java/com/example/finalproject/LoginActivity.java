@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,9 +12,15 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
-
+    FirebaseAuth fAuth;
     TextView donotaccount,forgot;
     EditText email,password;
     Button login;
@@ -33,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         user=findViewById(R.id.user);
         forgot=findViewById(R.id.forgot);
         group=findViewById(R.id.group);
-
+        fAuth=FirebaseAuth.getInstance();
 
         donotaccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,13 +82,41 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("dfsdfsdf",admin.getText().toString());
             Log.d("dfsdfsdf",user.getText().toString());
             if (admin.getText().toString().equals("Admin")){
-                Intent i=new Intent(LoginActivity.this, Admin_MainActivity.class);
-                startActivity(i);
-                finish();
+                String emaill=email.getText().toString().trim();
+
+                String passwordd=password.getText().toString().trim();
+                fAuth.signInWithEmailAndPassword(emaill,passwordd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(LoginActivity.this,"Logged in Success",Toast.LENGTH_SHORT).show();
+                        Intent i=new Intent(LoginActivity.this, Admin_MainActivity.class);
+                        startActivity(i);
+                    }else{
+                        Toast.makeText(LoginActivity.this,"ERROR !"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        Intent i=new Intent(LoginActivity.this, LoginActivity.class);
+                    }
+                    }
+                });
+
+
             }else  if (admin.getText().toString().equals("User")){
-                Intent i=new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(i);
-                finish();
+                String emaill=email.getText().toString().trim();
+
+                String passwordd=password.getText().toString().trim();
+                fAuth.signInWithEmailAndPassword(emaill,passwordd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(LoginActivity.this,"Logged in Success",Toast.LENGTH_SHORT).show();
+                            Intent i=new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(i);
+                        }else{
+                            Toast.makeText(LoginActivity.this,"ERROR !"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
             }
 
 

@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.finalproject.R;
-
 public class Admin_MainActivity extends AppCompatActivity {
 
     TextView view_item,Add_item,Logout;
@@ -19,7 +17,7 @@ public class Admin_MainActivity extends AppCompatActivity {
 
         view_item = findViewById(R.id.view_item);
         Add_item = findViewById(R.id.Add_item);
-        Logout = findViewById(R.id.Logout);
+        Logout = findViewById(R.id.Logoutt);
 
         view_item.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +33,12 @@ public class Admin_MainActivity extends AppCompatActivity {
 
                 Intent i=new Intent(Admin_MainActivity.this, Add_items.class);
                 startActivity(i);
+            }
+        });
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
             }
         });
 
