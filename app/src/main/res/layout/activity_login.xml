@@ -36,6 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <RadioGroup
+        android:id="@+id/group"
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -84,11 +85,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center"
+
         android:ems="10"
         android:gravity="center"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +98,7 @@
     <Button
         android:layout_gravity="center"
         android:gravity="center"
-        android:id="@+id/buttonsubmit"
+        android:id="@+id/buttonLogin"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -107,14 +108,15 @@
 
     <TextView
         android:id="@+id/donotaccount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Don't have an account? Signup"
-        android:textColor="@color/black" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account? Signup"/>
 
     <TextView
+        android:id="@+id/forgot"
         android:textColor="@color/red"
         android:layout_marginTop="20dp"
         android:gravity="center"
