@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     RadioGroup group;
 
     RadioButton admin,user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
