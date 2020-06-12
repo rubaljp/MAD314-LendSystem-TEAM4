@@ -9,12 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.finalproject.adpter.Admin_allAdapter;
+import com.example.finalproject.adpter.AdminAllAdapter;
 
-public class View_all_list extends AppCompatActivity {
+public class ViewAllItems extends AppCompatActivity {
 
     RecyclerView viewall_item;
-    Admin_allAdapter admin_allAdapter;
+    AdminAllAdapter admin_allAdapter;
     ImageView back,add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class View_all_list extends AppCompatActivity {
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         viewall_item.setLayoutManager(LayoutManagaer);
 
-        admin_allAdapter = new Admin_allAdapter(this);
+        admin_allAdapter = new AdminAllAdapter(this);
         viewall_item.setAdapter(admin_allAdapter);
 
         back=findViewById(R.id.back);
@@ -45,7 +45,7 @@ public class View_all_list extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(View_all_list.this, Add_items.class);
+                Intent i=new Intent(ViewAllItems.this, AddItems.class);
                 startActivity(i);
             }
         });

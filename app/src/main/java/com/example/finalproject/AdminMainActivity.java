@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class Admin_MainActivity extends AppCompatActivity {
+public class AdminMainActivity extends AppCompatActivity {
 
     TextView view_item,Add_item,Logout;
     @Override
@@ -23,7 +23,7 @@ public class Admin_MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(Admin_MainActivity.this, View_all_list.class);
+                Intent i=new Intent(AdminMainActivity.this, ViewAllItems.class);
                 startActivity(i);
             }
         });
@@ -31,7 +31,7 @@ public class Admin_MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(Admin_MainActivity.this, Add_items.class);
+                Intent i=new Intent(AdminMainActivity.this, AddItems.class);
                 startActivity(i);
             }
         });

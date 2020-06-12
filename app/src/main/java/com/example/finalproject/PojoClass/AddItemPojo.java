@@ -1,10 +1,10 @@
-package com.example.finalproject.pojo_class;
+package com.example.finalproject.PojoClass;
 
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Add_item_pojo {
+public class AddItemPojo {
 
     @SerializedName("error")
     @Expose

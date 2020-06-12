@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent i=new Intent(LoginActivity.this,Forgot_password.class);
+                Intent i=new Intent(LoginActivity.this, ForgetPassword.class);
                 startActivity(i);            }
         });
 
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(LoginActivity.this,"Logged in Success",Toast.LENGTH_SHORT).show();
-                        Intent i=new Intent(LoginActivity.this, Admin_MainActivity.class);
+                        Intent i=new Intent(LoginActivity.this, AdminMainActivity.class);
                         startActivity(i);
                     }else{
                         Toast.makeText(LoginActivity.this,"ERROR !"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();

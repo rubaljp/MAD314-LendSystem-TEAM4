@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.R;
 
-public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.ViewHolder>{
+public class AdminAllAdapter extends RecyclerView.Adapter<AdminAllAdapter.ViewHolder>{
 
     Context context;
 
     // RecyclerView recyclerView;
-    public Admin_allAdapter(Context context) {
+    public AdminAllAdapter(Context context) {
         this.context = context;
 
     }
     @Override
-    public Admin_allAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdminAllAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem= layoutInflater.inflate(R.layout.listitems_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);

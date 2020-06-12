@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class Add_items extends AppCompatActivity {
+public class AddItems extends AppCompatActivity {
 
     ImageView back;
     @Override

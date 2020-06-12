@@ -9,8 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -63,7 +61,7 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(SignUp.this,"USER SIGNED UP SUCCESSFULLY",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent (getApplicationContext(),Admin_MainActivity.class));
+                        startActivity(new Intent (getApplicationContext(), AdminMainActivity.class));
                     }else  {
                         Toast.makeText(SignUp.this,"ERROR !"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                     }

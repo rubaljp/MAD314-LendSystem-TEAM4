@@ -1,9 +1,9 @@
-package com.example.finalproject.pojo_class;
+package com.example.finalproject.PojoClass;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Register_model {
+public class RegisterModel {
     @SerializedName("message")
     @Expose
     private String message;

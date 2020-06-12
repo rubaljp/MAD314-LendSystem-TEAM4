@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.finalproject.adpter.User_item_Adapter;
+import com.example.finalproject.adpter.UserItemAdapter;
 
-public class User_ItemList extends AppCompatActivity {
+public class UserItemList extends AppCompatActivity {
     RecyclerView viewall_item;
-    User_item_Adapter user_item_adapter;
+    UserItemAdapter user_item_adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,7 @@ public class User_ItemList extends AppCompatActivity {
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         viewall_item.setLayoutManager(LayoutManagaer);
 
-        user_item_adapter = new User_item_Adapter(this);
+        user_item_adapter = new UserItemAdapter(this);
         viewall_item.setAdapter(user_item_adapter);
 
 
