@@ -8,11 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.finalproject.adpter.IssueBookAdapter;
+import com.example.finalproject.adpter.Issue_bookAdapter;
 
 public class BookIssue extends AppCompatActivity {
     RecyclerView bookissue;
-    IssueBookAdapter issue_bookAdapter;
+    Issue_bookAdapter issue_bookAdapter;
 
     ImageView back;
     @Override
@@ -27,7 +27,7 @@ public class BookIssue extends AppCompatActivity {
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         bookissue.setLayoutManager(LayoutManagaer);
 
-        issue_bookAdapter = new IssueBookAdapter(this);
+        issue_bookAdapter = new Issue_bookAdapter(this);
         bookissue.setAdapter(issue_bookAdapter);
 
         back=findViewById(R.id.back);

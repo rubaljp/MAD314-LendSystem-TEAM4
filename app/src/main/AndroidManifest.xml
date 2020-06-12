@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ForgetPassword"></activity>
+        <activity android:name=".Forgot_password"></activity>
         <activity android:name=".BookIssue" />
         <activity android:name=".UserItemList" />
         <activity android:name=".ShowItemDetail" />
-        <activity android:name=".AdminMainActivity" />
+        <activity android:name=".Admin_MainActivity" />
         <activity android:name=".ViewAllItems" />
         <activity android:name=".ResetPassword" />
-        <activity android:name=".AddItems" />
+        <activity android:name=".Add_items" />
         <activity android:name=".EmptyPage" />
         <activity android:name=".SignUp" />
         <activity
