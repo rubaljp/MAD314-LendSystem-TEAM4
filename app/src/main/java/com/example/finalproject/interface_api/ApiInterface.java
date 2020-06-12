@@ -1,11 +1,10 @@
 package com.example.finalproject.interface_api;
 
 import com.example.finalproject.Add_items;
-import com.example.finalproject.PojoClass.Add_item_pojo;
-import com.example.finalproject.PojoClass.AdminItems_list_pojo;
-import com.example.finalproject.PojoClass.Issued_item_list_pojo;
-import com.example.finalproject.PojoClass.Register_model;
-
+import com.example.finalproject.pojo_class.AdminItems_list_pojo;
+import com.example.finalproject.pojo_class.Issued_item_list_pojo;
+import com.example.finalproject.pojo_class.Register_model;
+import com.example.finalproject.pojo_class.Add_item_pojo;
 
 import java.util.HashMap;
 
