@@ -1,11 +1,11 @@
 package com.example.finalproject.interface_api;
 
-import com.example.finalproject.Add_items;
+import com.example.finalproject.pojo_class.Add_item_pojo;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
 import com.example.finalproject.pojo_class.Issued_item_list_pojo;
 import com.example.finalproject.pojo_class.Register_model;
-import com.example.finalproject.pojo_class.Add_item_pojo;
 
+import java.io.File;
 import java.util.HashMap;
 
 import okhttp3.MultipartBody;
@@ -14,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -31,7 +32,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("items_list")
-    Call<AdminItems_list_pojo> items_list(@Field("session_id") String sessionid, @Field("type") String type);
+    Call<AdminItems_list_pojo> items_list(@Field("session_id") String sessionid,@Field("type") String type);
 
     @FormUrlEncoded
     @POST("forgot_password")
@@ -40,7 +41,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("user_item_issued")
-    Call<Add_items> user_item_issued(@FieldMap HashMap<String, String> hashMap);
+    Call<Add_item_pojo> user_item_issued(@FieldMap HashMap<String, String> hashMap);
 
     @Multipart
     @POST("insert_items")
@@ -72,6 +73,10 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("logout")
     Call<Add_item_pojo> logout(@Field("session_id") String session_id);
+
+    @FormUrlEncoded
+    @POST("return_issued_item")
+    Call<Add_item_pojo> return_issued_item(@Field("session_id") String session_id,@Field("item_id") String item_id);
 
 
 }

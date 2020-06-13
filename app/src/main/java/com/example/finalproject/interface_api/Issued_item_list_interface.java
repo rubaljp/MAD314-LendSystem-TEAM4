@@ -9,3 +9,4 @@ public interface Issued_item_list_interface {
     void Issued_item_list(ArrayList<Issued_item_list_pojo.IssuedList> arrayList);
 
 }
+

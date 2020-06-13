@@ -1,6 +1,5 @@
 package com.example.finalproject.interface_api;
 
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,8 +7,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.finalproject.GlobalClass;
+import com.example.finalproject.LoginActivity;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.SignUp;
+
 import com.example.finalproject.Admin_MainActivity;
 import com.example.finalproject.pojo_class.Add_item_pojo;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
@@ -221,5 +222,38 @@ public class WebApicall {
         });
     }
 
+    public void return_issued_item(final Context context, String sessionid,String item_id) {
+        dailogshow(context);
+        Call<Add_item_pojo> userpost_responseCall = ApiClient.getClient().return_issued_item(sessionid,item_id);
+        userpost_responseCall.enqueue(new Callback<Add_item_pojo>() {
+            @Override
+            public void onResponse(Call<Add_item_pojo> call, Response<Add_item_pojo> response) {
+                dailoghide(context);
+
+                try {
+                    if (response.body().getStatus() ==  200) {
+
+                        GlobalClass.showtost(context, "" + response.body().getMessage());
+                    } else {
+                        GlobalClass.showtost(context, "" + response.body().getMessage());
+                    }
+                }catch (Exception e){
+                    GlobalClass.showtost(context, "" + "Item Already Issue");
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Add_item_pojo> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+                Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
 
 }
