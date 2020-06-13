@@ -56,6 +56,13 @@ public class AdminItems_list_pojo {
         @SerializedName("id")
         @Expose
         private Integer id;
+
+
+        @SerializedName("item_issued_status")
+        @Expose
+        private Integer itemissuedstatus;
+
+
         @SerializedName("name")
         @Expose
         private String name;
@@ -77,12 +84,16 @@ public class AdminItems_list_pojo {
         @SerializedName("created_at")
         @Expose
         private String createdAt;
+
         @SerializedName("updated_at")
         @Expose
         private String updatedAt;
 
         public Integer getId() {
             return id;
+        }
+        public Integer getItemissuedstatus() {
+            return itemissuedstatus;
         }
 
         public void setId(Integer id) {

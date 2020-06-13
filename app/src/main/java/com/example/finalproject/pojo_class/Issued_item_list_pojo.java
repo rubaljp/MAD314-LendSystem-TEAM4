@@ -56,6 +56,12 @@ public class Issued_item_list_pojo {
         @SerializedName("id")
         @Expose
         private Integer id;
+
+        @SerializedName("return_status")
+        @Expose
+        private Integer returnstatus;
+
+
         @SerializedName("name")
         @Expose
         private String name;
@@ -90,9 +96,15 @@ public class Issued_item_list_pojo {
         public Integer getId() {
             return id;
         }
+        public Integer getReturnstatus() {
+            return returnstatus;
+        }
 
         public void setId(Integer id) {
             this.id = id;
+        }
+        public void setReturnstatus(Integer id) {
+            this.returnstatus = id;
         }
 
         public String getName() {
