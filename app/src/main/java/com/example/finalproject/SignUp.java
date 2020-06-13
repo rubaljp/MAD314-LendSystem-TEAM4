@@ -15,7 +15,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.finalproject.admin.Admin_MainActivity;
+import com.example.finalproject.Admin_MainActivity;
 import com.example.finalproject.interface_api.ApiClient;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.pojo_class.Register_model;
