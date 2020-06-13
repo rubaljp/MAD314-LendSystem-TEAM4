@@ -65,6 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:text="luvi132@mailinator.com"
         android:gravity="center"
         android:hint="Username"
         android:inputType="textPersonName"
@@ -85,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-
+        android:text="12345678"
         android:ems="10"
         android:gravity="center"
         android:hint="Password"
@@ -102,7 +103,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="#714811"
+        android:background="@drawable/backgroundbutton"
         android:text="LOGIN"
         />
 

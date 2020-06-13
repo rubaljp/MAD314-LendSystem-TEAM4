@@ -7,17 +7,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.bumptech.glide.Glide;
 import com.example.finalproject.R;
+import com.example.finalproject.pojo_class.Issued_item_list_pojo;
+
+import java.util.ArrayList;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class Issue_bookAdapter extends RecyclerView.Adapter<Issue_bookAdapter.ViewHolder>{
 
     Context context;
-
+    ArrayList<Issued_item_list_pojo.IssuedList> arrayLists;
     // RecyclerView recyclerView;
-    public Issue_bookAdapter(Context context) {
+    public Issue_bookAdapter(Context context, ArrayList<Issued_item_list_pojo.IssuedList> arrayList ) {
         this.context = context;
+        this.arrayLists = arrayList;
 
     }
     @Override
@@ -33,33 +38,38 @@ public class Issue_bookAdapter extends RecyclerView.Adapter<Issue_bookAdapter.Vi
 
 
         holder.edit_delte.setVisibility(View.GONE);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+        Glide.with(context)
+                .load(arrayLists.get(position).getImage())
+                .fitCenter()
+                .placeholder(R.drawable.logo)
+                .into(holder.item_pic);
+        holder.tital.setText(arrayLists.get(position).getName());
+        holder.discraption.setText(arrayLists.get(position).getDescription());
 
 
-            }
-        });
 
     }
 
 
     @Override
     public int getItemCount() {
-        return 10;
+        return arrayLists.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
-        public TextView textView;
+        public ImageView item_pic;
+        public TextView textView,tital,discraption;
         LinearLayout edit_delte;
         public ViewHolder(View itemView) {
             super(itemView);
             edit_delte =itemView.findViewById(R.id.edit_delte);
+            item_pic =itemView.findViewById(R.id.item_pic);
+            tital =itemView.findViewById(R.id.tital);
+            discraption =itemView.findViewById(R.id.discraption);
 
 
         }
     }
 }
-
 

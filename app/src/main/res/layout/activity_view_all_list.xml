@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewAllItems"
+    tools:context=".View_all_list"
     android:orientation="vertical">
     <RelativeLayout android:layout_width="match_parent"
         android:id="@+id/toolbar"
@@ -49,11 +49,19 @@
             />
 
     </RelativeLayout>
-
-
-
+    <SearchView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search Here"
+        android:iconifiedByDefault="false"
+        android:layout_alignParentTop="true"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/viewall_item"></androidx.recyclerview.widget.RecyclerView>

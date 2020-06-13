@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowItemDetail"
+    tools:context=".user.Show_item_detail"
     android:orientation="vertical">
     <RelativeLayout android:layout_width="match_parent"
         android:id="@+id/toolbar"
@@ -59,13 +59,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
             card_view:cardUseCompatPadding="true">
             <RelativeLayout
+                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
                 <ImageView
+                    android:scaleType="fitXY"
                     android:layout_centerVertical="true"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
@@ -101,12 +104,12 @@
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
-    <EditText
+    <TextView
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/edit_bacground"
-        android:id="@+id/usernameLogin"
+        android:id="@+id/issuedate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -115,7 +118,7 @@
         android:inputType="textPersonName"
         />
 
-    <EditText
+    <TextView
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -132,11 +135,11 @@
     <Button
         android:layout_gravity="center"
         android:gravity="center"
-        android:id="@+id/buttonsubmit"
+        android:id="@+id/confirm"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="#714811"
+        android:background="@drawable/backgroundbutton"
         android:text="Confirm"
         />
 

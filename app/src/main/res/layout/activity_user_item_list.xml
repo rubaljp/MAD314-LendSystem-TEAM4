@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserItemList"
+    tools:context=".user.User_ItemList"
     android:orientation="vertical">
     <RelativeLayout android:layout_width="match_parent"
         android:id="@+id/toolbar"
@@ -50,6 +50,7 @@
     </RelativeLayout>
 
     <RadioGroup
+        android:id="@+id/radio_group"
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -58,17 +59,28 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/admin"
+            android:id="@+id/elect"
             android:text="Electronics"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:onClick="onRadioButtonClicked"/>
         <RadioButton
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/user"
-            android:text="Book"/>
+            android:id="@+id/book"
+            android:text="Book"
+            android:onClick="onRadioButtonClicked"/>
     </RadioGroup>
-
+    <SearchView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search Here"
+        android:iconifiedByDefault="false"
+        android:layout_alignParentTop="true"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"

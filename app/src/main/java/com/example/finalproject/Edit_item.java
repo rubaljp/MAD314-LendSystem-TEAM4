@@ -9,7 +9,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.finalproject.GlobalClass;
 import com.example.finalproject.R;
 import com.example.finalproject.interface_api.CSPreferences;
@@ -28,19 +28,17 @@ import com.example.finalproject.interface_api.WebApicall;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class Add_items extends AppCompatActivity {
+public class Edit_item extends AppCompatActivity {
+
 
     ImageView back,take_image,iamgevirew;
     RadioGroup group;
-    RadioButton elect;
+    RadioButton elect,book;
 
     Button buttonsubmit;
     EditText tital,no_of_item,discraption;
@@ -50,12 +48,11 @@ public class Add_items extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
 
     private Uri uri = null;
-    File filePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_items);
+        setContentView(R.layout.activity_edit_item);
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +66,25 @@ public class Add_items extends AppCompatActivity {
         discraption=findViewById(R.id.discraption);
         take_image=findViewById(R.id.take_image);
         iamgevirew=findViewById(R.id.iamgevirew);
+        final Bundle extras = getIntent().getExtras();
+
+        tital.setText(extras.getString("tital"));
+        no_of_item.setText(""+extras.getInt("total_item"));
+        discraption.setText(extras.getString("discraption"));
+        Glide.with(this)
+                .load(extras.getString("image"))
+                .fitCenter()
+                .placeholder(R.drawable.logo)
+                .into(iamgevirew);
+
+        if (1 == extras.getInt("item_type")){
+            elect=findViewById(R.id.elect);
+            elect.setChecked(true);
+        }else {
+            book=findViewById(R.id.book);
+            book.setChecked(true);
+
+        }
 
         group=findViewById(R.id.group);
         buttonsubmit=findViewById(R.id.buttonsubmit);
@@ -86,52 +102,62 @@ public class Add_items extends AppCompatActivity {
                 elect=findViewById(selectedId);
 
                 if (elect.getText().toString().length() == 0){
-                    GlobalClass.showtost(Add_items.this,"Please select your opation Electronics & Book");
+                    GlobalClass.showtost(Edit_item.this,"Please select your opation Electronics & Book");
                 }else if (tital.getText().toString().length() == 0){
-                    GlobalClass.showtost(Add_items.this,"Please Enter your Tital");
+                    GlobalClass.showtost(Edit_item.this,"Please Enter your Tital");
 
                 }else if (no_of_item.getText().toString().length() == 0){
-                    GlobalClass.showtost(Add_items.this,"Please Enter Your No of ");
+                    GlobalClass.showtost(Edit_item.this,"Please Enter Your No of ");
                 }else if (discraption.getText().toString().length() == 0){
-                    GlobalClass.showtost(Add_items.this,"Please Enter Your Descraption ");
+                    GlobalClass.showtost(Edit_item.this,"Please Enter Your Descraption ");
                 }else{
                     if (elect.getText().toString().equals("Electronics")){
 
-                        RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"),CSPreferences.readString(Add_items.this,"sessioniid"));
+                        RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"), CSPreferences.readString(Edit_item.this,"sessioniid"));
                         RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),tital.getText().toString().trim());
                         RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), discraption.getText().toString().trim());
                         RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), no_of_item.getText().toString().trim());
                         RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"1");
+                        RequestBody item_id = RequestBody.create(MediaType.parse("multipart/form-data"),""+extras.getInt("itemid"));
+                        RequestBody item_type = RequestBody.create(MediaType.parse("multipart/form-data"),""+extras.getInt("item_type"));
+
+
+
+
                         RequestBody imagerequestFile;
                         MultipartBody.Part imagebody;
 
 
                         if (file == null){
-                            GlobalClass.showtost(Add_items.this,"Please Enter Your image");
+                            WebApicall webApicall = new WebApicall();
+                            webApicall.update_del_items(Edit_item.this,session_id,name,description,no_of_items, type,item_id,item_type,null);
 
                         }else {
                             imagerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
                             imagebody = MultipartBody.Part.createFormData("image",file.getName(),imagerequestFile);
                             WebApicall webApicall = new WebApicall();
-                            webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,imagebody);
+                            webApicall.update_del_items(Edit_item.this,session_id,name,description,no_of_items, type,item_id,item_type,imagebody);
                         }
                     }else {
-                        RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"),CSPreferences.readString(Add_items.this,"sessioniid"));
+                        RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"),CSPreferences.readString(Edit_item.this,"sessioniid"));
                         RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),tital.getText().toString().trim());
                         RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), discraption.getText().toString().trim());
                         RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), no_of_item.getText().toString().trim());
-                        RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"2");
+                        RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"1");
+                        RequestBody item_id = RequestBody.create(MediaType.parse("multipart/form-data"),extras.getString("itemid"));
+                        RequestBody item_type = RequestBody.create(MediaType.parse("multipart/form-data"),extras.getString("item_type"));
+
                         RequestBody imagerequestFile;
                         MultipartBody.Part imagebody;
                         if (file.toString().equals("null")){
                             WebApicall webApicall = new WebApicall();
-                            webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,null);
+                            webApicall.update_del_items(Edit_item.this,session_id,name,description,no_of_items, type,item_id,item_type,null);
 
                         }else {
                             imagerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
                             imagebody = MultipartBody.Part.createFormData("image",file.getName(),imagerequestFile);
                             WebApicall webApicall = new WebApicall();
-                            webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,imagebody);
+                            webApicall.update_del_items(Edit_item.this,session_id,name,description,no_of_items, type,item_id,item_type,imagebody);
                         }
                     }
 
