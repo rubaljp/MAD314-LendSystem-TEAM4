@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.finalproject.R;
+import com.example.finalproject.Show_item_detail;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
 
 import java.util.ArrayList;

@@ -18,7 +18,7 @@ import com.example.finalproject.R;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.interface_api.WebApicall;
 import com.example.finalproject.pojo_class.Issued_item_list_pojo;
-import com.example.finalproject.user.Show_item_detail;
+import com.example.finalproject.Show_item_detail;
 
 import java.util.ArrayList;
 
