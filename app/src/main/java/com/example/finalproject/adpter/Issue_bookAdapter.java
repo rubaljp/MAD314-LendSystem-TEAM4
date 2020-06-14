@@ -1,19 +1,26 @@
 package com.example.finalproject.adpter;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.example.finalproject.R;
-import com.example.finalproject.pojo_class.Issued_item_list_pojo;
-
-import java.util.ArrayList;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.example.finalproject.GlobalClass;
+import com.example.finalproject.R;
+import com.example.finalproject.interface_api.CSPreferences;
+import com.example.finalproject.interface_api.WebApicall;
+import com.example.finalproject.pojo_class.Issued_item_list_pojo;
+import com.example.finalproject.user.Show_item_detail;
+
+import java.util.ArrayList;
 
 public class Issue_bookAdapter extends RecyclerView.Adapter<Issue_bookAdapter.ViewHolder>{
 
@@ -34,10 +41,21 @@ public class Issue_bookAdapter extends RecyclerView.Adapter<Issue_bookAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
 
 
-        holder.edit_delte.setVisibility(View.GONE);
+        holder.avaliable.setVisibility(View.GONE);
+        //  holder.retrun.setVisibility(View.VISIBLE);
+        holder.ret_date.setVisibility(View.VISIBLE);
+        holder.ret_date.setText("Return date : "+arrayLists.get(position).getReturnDate());
+
+
+        if (arrayLists.get(position).getReturnstatus() == 1){
+            holder.retrun.setVisibility(View.GONE);
+        }else {
+            holder.retrun.setVisibility(View.VISIBLE);
+
+        }
 
         Glide.with(context)
                 .load(arrayLists.get(position).getImage())
@@ -47,7 +65,22 @@ public class Issue_bookAdapter extends RecyclerView.Adapter<Issue_bookAdapter.Vi
         holder.tital.setText(arrayLists.get(position).getName());
         holder.discraption.setText(arrayLists.get(position).getDescription());
 
+        holder.retrun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (GlobalClass.isNetworkConnected(context)) {
+                    WebApicall webApicall =new WebApicall();
+                    webApicall.return_issued_item(context, CSPreferences.readString(context,"sessioniid"),""+arrayLists.get(position).getId());
 
+                } else {
+
+                    Toast.makeText(context, R.string.nointernet, Toast.LENGTH_LONG).show();
+
+
+                }
+
+            }
+        });
 
     }
 
@@ -60,16 +93,19 @@ public class Issue_bookAdapter extends RecyclerView.Adapter<Issue_bookAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView item_pic;
         public TextView textView,tital,discraption;
-        LinearLayout edit_delte;
+        TextView avaliable,retrun,ret_date;
         public ViewHolder(View itemView) {
             super(itemView);
-            edit_delte =itemView.findViewById(R.id.edit_delte);
+            avaliable =itemView.findViewById(R.id.avaliable);
+            retrun =itemView.findViewById(R.id.retrun);
             item_pic =itemView.findViewById(R.id.item_pic);
             tital =itemView.findViewById(R.id.tital);
             discraption =itemView.findViewById(R.id.discraption);
+            ret_date =itemView.findViewById(R.id.ret_date);
 
 
         }
     }
 }
+
 
