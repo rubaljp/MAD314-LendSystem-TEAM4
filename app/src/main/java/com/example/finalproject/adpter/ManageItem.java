@@ -17,10 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.finalproject.GlobalClass;
 import com.example.finalproject.R;
-import com.example.finalproject.admin.Add_items;
 import com.example.finalproject.admin.Edit_item;
 import com.example.finalproject.interface_api.ApiClient;
-import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.pojo_class.Add_item_pojo;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
 
@@ -33,42 +31,34 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.ViewHolder> implements Filterable {
+public class ManageItem extends RecyclerView.Adapter<ManageItem.ViewHolder> implements Filterable {
 
     Context context;
-    ArrayList<AdminItems_list_pojo.ItemList>  arrayList;
+    ArrayList<AdminItems_list_pojo.ItemList> arrayList;
     ArrayList<AdminItems_list_pojo.ItemList> filter;
     // RecyclerView recyclerView;
-    public Admin_allAdapter(Context context, ArrayList<AdminItems_list_pojo.ItemList> arrayList) {
+    public ManageItem(Context context, ArrayList<AdminItems_list_pojo.ItemList> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
         this.filter = arrayList;
 
     }
     @Override
-    public Admin_allAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ManageItem.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem= layoutInflater.inflate(R.layout.listitems_row, parent, false);
-        ViewHolder viewHolder = new ViewHolder(listItem);
-
+        ManageItem.ViewHolder viewHolder = new ManageItem.ViewHolder(listItem);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-
-
-        if (arrayList.get(position).getItemissuedstatus() == 1){
-            holder.avaliable.setText("Borrowed");
-        }else {
-            holder.avaliable.setText("Available");
-        }
-
+    public void onBindViewHolder(ManageItem.ViewHolder holder, final int position) {
         if (arrayList.get(position).getType() == 1){
             holder.elect.setText("Electronics");
         }else {
             holder.elect.setText("Book");
         }
+
 
         Glide.with(context)
                 .load(filter.get(position).getImage())
@@ -93,30 +83,15 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+                RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),"");
+                RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+                RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+                RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"2");
+                RequestBody item_id = RequestBody.create(MediaType.parse("multipart/form-data"),""+arrayList.get(position).getId());
+                RequestBody item_type = RequestBody.create(MediaType.parse("multipart/form-data"),"");
 
-                if (GlobalClass.isNetworkConnected(context)) {
-
-
-
-                    RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"), "");
-                    RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),"");
-                    RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), "");
-                    RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), "");
-                    RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"2");
-                    RequestBody item_id = RequestBody.create(MediaType.parse("multipart/form-data"),""+arrayList.get(position).getId());
-                    RequestBody item_type = RequestBody.create(MediaType.parse("multipart/form-data"),"");
-
-                    update_del_items(context,session_id,name,description,no_of_items, type,item_id,item_type,null,position);
-
-                } else {
-
-                    Toast.makeText(context, R.string.nointernet, Toast.LENGTH_LONG).show();
-
-
-                }
-
-
-            }
+                update_del_items(context,session_id,name,description,no_of_items, type,item_id,item_type,null,position);            }
         });
     }
 
@@ -163,7 +138,7 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView item_pic;
-        public TextView tital,discraption,edit,delete,avaliable,elect;
+        public TextView tital,discraption,edit,delete,elect;
         public ViewHolder(View itemView) {
             super(itemView);
 
@@ -172,13 +147,7 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
             discraption=itemView.findViewById(R.id.discraption);
             edit=itemView.findViewById(R.id.edit);
             delete=itemView.findViewById(R.id.delete);
-            avaliable=itemView.findViewById(R.id.avaliable);
             elect=itemView.findViewById(R.id.elect);
-
-            edit.setVisibility(View.GONE);
-            delete.setVisibility(View.GONE);
-            avaliable.setVisibility(View.VISIBLE);
-
 
         }
     }
