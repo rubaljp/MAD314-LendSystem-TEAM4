@@ -1,7 +1,4 @@
 package com.example.finalproject;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.CursorLoader;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,14 +18,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.finalproject.GlobalClass;
-import com.example.finalproject.R;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.interface_api.WebApicall;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.content.CursorLoader;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

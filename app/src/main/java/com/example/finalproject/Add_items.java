@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.finalproject.GlobalClass;
 import com.example.finalproject.R;
@@ -95,46 +96,58 @@ public class Add_items extends AppCompatActivity {
                 }else if (discraption.getText().toString().length() == 0){
                     GlobalClass.showtost(Add_items.this,"Please Enter Your Descraption ");
                 }else{
-                    if (elect.getText().toString().equals("Electronics")){
-
-                        RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"),CSPreferences.readString(Add_items.this,"sessioniid"));
-                        RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),tital.getText().toString().trim());
-                        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), discraption.getText().toString().trim());
-                        RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), no_of_item.getText().toString().trim());
-                        RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"1");
-                        RequestBody imagerequestFile;
-                        MultipartBody.Part imagebody;
+                    if (GlobalClass.isNetworkConnected(Add_items.this)) {
 
 
-                        if (file == null){
-                            GlobalClass.showtost(Add_items.this,"Please Enter Your image");
+                        if (elect.getText().toString().equals("Electronics")){
 
+
+
+
+
+                            RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"),CSPreferences.readString(Add_items.this,"sessioniid"));
+                            RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),tital.getText().toString().trim());
+                            RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), discraption.getText().toString().trim());
+                            RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), no_of_item.getText().toString().trim());
+                            RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"1");
+                            RequestBody imagerequestFile;
+                            MultipartBody.Part imagebody;
+
+
+                            if (file == null){
+                                GlobalClass.showtost(Add_items.this,"Please Enter Your image");
+
+                            }else {
+                                imagerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                                imagebody = MultipartBody.Part.createFormData("image",file.getName(),imagerequestFile);
+                                WebApicall webApicall = new WebApicall();
+                                webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,imagebody);
+                            }
                         }else {
-                            imagerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                            imagebody = MultipartBody.Part.createFormData("image",file.getName(),imagerequestFile);
-                            WebApicall webApicall = new WebApicall();
-                            webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,imagebody);
-                        }
-                    }else {
-                        RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"),CSPreferences.readString(Add_items.this,"sessioniid"));
-                        RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),tital.getText().toString().trim());
-                        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), discraption.getText().toString().trim());
-                        RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), no_of_item.getText().toString().trim());
-                        RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"2");
-                        RequestBody imagerequestFile;
-                        MultipartBody.Part imagebody;
-                        if (file.toString().equals("null")){
-                            WebApicall webApicall = new WebApicall();
-                            webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,null);
+                            RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"),CSPreferences.readString(Add_items.this,"sessioniid"));
+                            RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),tital.getText().toString().trim());
+                            RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), discraption.getText().toString().trim());
+                            RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), no_of_item.getText().toString().trim());
+                            RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"2");
+                            RequestBody imagerequestFile;
+                            MultipartBody.Part imagebody;
+                            if (file.toString().equals("null")){
+                                WebApicall webApicall = new WebApicall();
+                                webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,null);
 
-                        }else {
-                            imagerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                            imagebody = MultipartBody.Part.createFormData("image",file.getName(),imagerequestFile);
-                            WebApicall webApicall = new WebApicall();
-                            webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,imagebody);
+                            }else {
+                                imagerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                                imagebody = MultipartBody.Part.createFormData("image",file.getName(),imagerequestFile);
+                                WebApicall webApicall = new WebApicall();
+                                webApicall.insert_items(Add_items.this,session_id,name,description,no_of_items, type,imagebody);
+                            }
                         }
+                    } else {
+
+                        Toast.makeText(Add_items.this, R.string.nointernet, Toast.LENGTH_LONG).show();
+
+
                     }
-
 
                 }
             }

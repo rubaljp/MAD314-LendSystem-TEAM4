@@ -10,16 +10,13 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.finalproject.R;
-import com.example.finalproject.admin.Edit_item;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
-import com.example.finalproject.user.Show_item_detail;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class User_item_Adapter extends RecyclerView.Adapter<User_item_Adapter.ViewHolder> implements Filterable {
 

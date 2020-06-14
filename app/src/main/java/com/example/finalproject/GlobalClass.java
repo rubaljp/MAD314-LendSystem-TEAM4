@@ -1,7 +1,9 @@
 package com.example.finalproject;
 
+
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -56,5 +58,10 @@ public class GlobalClass {
     public static void progressdailogHide(Context context, ProgressDialog pd){
         pd = new ProgressDialog(context);
         pd.dismiss();
+    }
+    public static boolean isNetworkConnected( Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
     }
 }

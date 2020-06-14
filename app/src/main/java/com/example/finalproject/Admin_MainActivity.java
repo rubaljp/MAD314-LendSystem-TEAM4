@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +29,7 @@ import retrofit2.Response;
 
 public class Admin_MainActivity extends AppCompatActivity {
 
-    TextView view_item,Add_item,Logout;
+    TextView view_item,Add_item,Logout,manage_item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +38,21 @@ public class Admin_MainActivity extends AppCompatActivity {
         view_item = findViewById(R.id.view_item);
         Add_item = findViewById(R.id.Add_item);
         Logout = findViewById(R.id.Logout);
+        manage_item = findViewById(R.id.manage_item);
 
         view_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent i=new Intent(Admin_MainActivity.this, View_all_list.class);
+                startActivity(i);
+            }
+        });
+        manage_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i=new Intent(Admin_MainActivity.this, Manage_item.class);
                 startActivity(i);
             }
         });
@@ -117,6 +127,7 @@ public class Admin_MainActivity extends AppCompatActivity {
             }
         });
     }
+
     ProgressDialog pd;
 
     public void dailogshow(Context context) {

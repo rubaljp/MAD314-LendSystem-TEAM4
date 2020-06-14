@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Final Project</string>
+
+    <!--Profile-->
+    <string name="txt_slct_option">Option</string>
+    <string name="txt_gellery">Gallery</string>
+    <string name="txt_warning">Cancel</string>
+    <string name="txt_cameray">Camera</string>
+
+    <string-array name="media_options">
+        <item name="gallery">Choose From Gallery</item>
+        <item name="camera">Take Photo</item>
+        <item name="cancel">Cancel</item>
+    </string-array>
+
+    <string name="nointernet">Please check intenet connection</string>
 </resources>

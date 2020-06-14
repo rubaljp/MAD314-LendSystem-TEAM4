@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.finalproject">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Forgot_password"></activity>
+        <activity android:name=".Manage_item"></activity>
+        <activity android:name=".Forgot_password" />
         <activity android:name=".BookIssue" />
-        <activity android:name=".UserItemList" />
-        <activity android:name=".ShowItemDetail" />
+        <activity android:name=".User_ItemList" />
+        <activity android:name=".Show_item_detail" />
         <activity android:name=".Admin_MainActivity" />
-        <activity android:name=".ViewAllItems" />
         <activity android:name=".ResetPassword" />
         <activity android:name=".Add_items" />
         <activity android:name=".EmptyPage" />

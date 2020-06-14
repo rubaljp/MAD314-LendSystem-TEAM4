@@ -1,0 +1,265 @@
+@startuml
+
+title __FINALPROJECT's Class Diagram__\n
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Add_items {
+        ~ back : ImageView
+        ~ buttonsubmit : Button
+        ~ discraption : EditText
+        ~ elect : RadioButton
+        ~ file : File
+        ~ filePath : File
+        ~ group : RadioGroup
+        ~ iamgevirew : ImageView
+        ~ no_of_item : EditText
+        ~ take_image : ImageView
+        ~ tital : EditText
+        {static} - CAMERA_REQUEST : int
+        - requestCode : int
+        - uri : Uri
+        + getImageUri()
+        + getRealPathFromURI()
+        + onActivityResult()
+        + showpicture()
+        # onCreate()
+        - getPath()
+        - showFileChooser()
+        - takePhotoFromCamera()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Admin_MainActivity {
+        ~ Add_item : TextView
+        ~ Logout : TextView
+        ~ pd : ProgressDialog
+        ~ view_item : TextView
+        + Logut()
+        + dailoghide()
+        + dailogshow()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.BookIssue {
+        ~ arrayLists : ArrayList<IssuedList>
+        ~ back : ImageView
+        ~ bookissue : RecyclerView
+        + Issued_item_list()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Edit_item {
+        ~ back : ImageView
+        ~ book : RadioButton
+        ~ buttonsubmit : Button
+        ~ discraption : EditText
+        ~ elect : RadioButton
+        ~ file : File
+        ~ group : RadioGroup
+        ~ iamgevirew : ImageView
+        ~ no_of_item : EditText
+        ~ take_image : ImageView
+        ~ tital : EditText
+        {static} - CAMERA_REQUEST : int
+        - requestCode : int
+        - uri : Uri
+        + getImageUri()
+        + getRealPathFromURI()
+        + onActivityResult()
+        + showpicture()
+        # onCreate()
+        - getPath()
+        - showFileChooser()
+        - takePhotoFromCamera()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.EmptyPage {
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.FlashScreen {
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Forgot_password {
+        ~ email : EditText
+        ~ submit : Button
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.GlobalClass {
+        ~ context : Context
+        {static} + dailoghide()
+        {static} + dailogshow()
+        {static} + isValidEmail()
+        {static} + progressdailogHide()
+        {static} + progressdailogShow()
+        {static} + showtost()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.LoginActivity {
+        ~ admin : RadioButton
+        ~ donotaccount : TextView
+        ~ email : EditText
+        ~ forgot : TextView
+        ~ group : RadioGroup
+        ~ login : Button
+        ~ password : EditText
+        ~ pd : ProgressDialog
+        ~ permissionListener : PermissionListener
+        ~ user : RadioButton
+        + LoginApi()
+        + checkpermissions()
+        + dailoghide()
+        + dailogshow()
+        + validation()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.MainActivity {
+        ~ Logout : TextView
+        ~ issuebook : TextView
+        ~ pd : ProgressDialog
+        ~ view_item : TextView
+        + Logut()
+        + dailoghide()
+        + dailogshow()
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.ResetPassword {
+        ~ hello : Button
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Show_item_detail {
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.SignUp {
+        ~ admin : RadioButton
+        ~ buttonsubmit : Button
+        ~ c_password : EditText
+        ~ cancal : Button
+        ~ email : EditText
+        ~ group : RadioGroup
+        ~ name : EditText
+        ~ password : EditText
+        ~ pd : ProgressDialog
+        ~ phone_number : EditText
+        ~ user : RadioButton
+        + dailoghide()
+        + dailogshow()
+        + registerUser()
+        # onCreate()
+        - validaiton()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.User_ItemList {
+        ~ arrayLists : ArrayList<ItemList>
+        ~ book : RadioButton
+        ~ elect : RadioButton
+        ~ radio_group : RadioGroup
+        ~ searchView : SearchView
+        ~ viewall_item : RecyclerView
+        + itemlist()
+        + onRadioButtonClicked()
+        # onCreate()
+        - check()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.ViewAllItems {
+        ~ add : ImageView
+        ~ back : ImageView
+        ~ viewall_item : RecyclerView
+        # onCreate()
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.View_all_list {
+        ~ add : ImageView
+        ~ arrayLists : ArrayList<ItemList>
+        ~ back : ImageView
+        ~ searchView : SearchView
+        ~ viewall_item : RecyclerView
+        + itemlist()
+        # onCreate()
+    }
+  }
+  
+
+  com.example.finalproject.Add_items -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.Admin_MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.BookIssue .up.|> com.example.finalproject.interface_api.Issued_item_list_interface
+  com.example.finalproject.BookIssue -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.BookIssue o-- com.example.finalproject.adpter.Issue_bookAdapter : issue_bookAdapter
+  com.example.finalproject.Edit_item -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.EmptyPage -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.FlashScreen -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.Forgot_password -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.LoginActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.ResetPassword -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.Show_item_detail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.SignUp -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.User_ItemList .up.|> com.example.finalproject.interface_api.Admin_item_interface
+  com.example.finalproject.User_ItemList -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.User_ItemList o-- com.example.finalproject.adpter.User_item_Adapter : user_item_adapter
+  com.example.finalproject.ViewAllItems -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.ViewAllItems o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
+  com.example.finalproject.View_all_list .up.|> com.example.finalproject.interface_api.Admin_item_interface
+  com.example.finalproject.View_all_list -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.View_all_list o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

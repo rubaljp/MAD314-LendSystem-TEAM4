@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookIssue"
+    tools:context=".admin.View_all_list"
     android:orientation="vertical">
     <RelativeLayout android:layout_width="match_parent"
         android:id="@+id/toolbar"
@@ -30,30 +30,40 @@
             android:layout_alignRight="@+id/tital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Issue Book"
+            android:text="Manage Item"
             android:textSize="18dp"
             />
 
 
 
-        <ImageView android:layout_width="wrap_content"
+        <TextView android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:text="Home"
+            android:text="Add"
             android:padding="10dp"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:gravity="center|left"
             android:id="@+id/add"
+            android:src="@drawable/ic_add_black_24dp"
             />
 
     </RelativeLayout>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="20dp"
+    <SearchView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bookissue"></androidx.recyclerview.widget.RecyclerView>
+        android:queryHint="Search Here"
+        android:iconifiedByDefault="false"
+        android:layout_alignParentTop="true"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewall_item"></androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

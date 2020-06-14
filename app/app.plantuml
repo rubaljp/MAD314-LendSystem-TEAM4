@@ -1,0 +1,251 @@
+@startuml
+
+title __APP's Class Diagram__\n
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Add_items {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Admin_MainActivity {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.BookIssue {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Edit_item {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.EmptyPage {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.FlashScreen {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Forgot_password {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.GlobalClass {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.LoginActivity {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.MainActivity {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.ResetPassword {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.Show_item_detail {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.SignUp {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.User_ItemList {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.ViewAllItems {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    class com.example.finalproject.View_all_list {
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace adpter {
+      class com.example.finalproject.adpter.Admin_allAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace adpter {
+      class com.example.finalproject.adpter.Issue_bookAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace adpter {
+      class com.example.finalproject.adpter.Show_item_detail {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace adpter {
+      class com.example.finalproject.adpter.User_item_Adapter {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace interface_api {
+      interface com.example.finalproject.interface_api.Admin_item_interface {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace interface_api {
+      class com.example.finalproject.interface_api.ApiClient {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace interface_api {
+      interface com.example.finalproject.interface_api.ApiInterface {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace interface_api {
+      class com.example.finalproject.interface_api.CSPreferences {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace interface_api {
+      interface com.example.finalproject.interface_api.Issued_item_list_interface {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace interface_api {
+      class com.example.finalproject.interface_api.WebApicall {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.Add_item_pojo {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.AdminItems_list_pojo {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.Issued_item_list_pojo {
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.Register_model {
+      }
+    }
+  }
+  
+
+  com.example.finalproject.Add_items -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.Admin_MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.BookIssue .up.|> com.example.finalproject.interface_api.Issued_item_list_interface
+  com.example.finalproject.BookIssue -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.BookIssue o-- com.example.finalproject.adpter.Issue_bookAdapter : issue_bookAdapter
+  com.example.finalproject.Edit_item -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.EmptyPage -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.FlashScreen -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.Forgot_password -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.LoginActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.ResetPassword -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.Show_item_detail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.SignUp -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.User_ItemList .up.|> com.example.finalproject.interface_api.Admin_item_interface
+  com.example.finalproject.User_ItemList -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.User_ItemList o-- com.example.finalproject.adpter.User_item_Adapter : user_item_adapter
+  com.example.finalproject.ViewAllItems -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.ViewAllItems o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
+  com.example.finalproject.View_all_list .up.|> com.example.finalproject.interface_api.Admin_item_interface
+  com.example.finalproject.View_all_list -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.View_all_list o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
+  com.example.finalproject.adpter.Admin_allAdapter .up.|> android.widget.Filterable
+  com.example.finalproject.adpter.Admin_allAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.finalproject.adpter.Issue_bookAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.finalproject.adpter.Show_item_detail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.adpter.User_item_Adapter .up.|> android.widget.Filterable
+  com.example.finalproject.adpter.User_item_Adapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.finalproject.pojo_class.Register_model o-- com.example.finalproject.pojo_class.Register_model.Profile : profile
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

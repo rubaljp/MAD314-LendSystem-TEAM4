@@ -1,4 +1,5 @@
 package com.example.finalproject;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,11 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalproject.GlobalClass;
 import com.example.finalproject.R;
+import com.example.finalproject.SignUp;
 import com.example.finalproject.adpter.Admin_allAdapter;
+import com.example.finalproject.adpter.ManageItem;
 import com.example.finalproject.interface_api.Admin_item_interface;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.interface_api.WebApicall;
@@ -21,26 +25,27 @@ import com.example.finalproject.pojo_class.AdminItems_list_pojo;
 
 import java.util.ArrayList;
 
-public class View_all_list extends AppCompatActivity implements Admin_item_interface {
-
+public class Manage_item extends AppCompatActivity  implements Admin_item_interface {
     RecyclerView viewall_item;
-    Admin_allAdapter admin_allAdapter;
-    ImageView back,add;
-    ArrayList<AdminItems_list_pojo.ItemList>  arrayLists = new ArrayList<>();
+    ManageItem manageItemadapter;
+    ImageView back;
+    TextView add;
+    ArrayList<AdminItems_list_pojo.ItemList> arrayLists = new ArrayList<>();
     SearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_all_list);
+        setContentView(R.layout.activity_manage_item);
         viewall_item =findViewById(R.id.viewall_item);
         searchView =findViewById(R.id.searchView);
 
-        LinearLayoutManager     LayoutManagaer
+        LinearLayoutManager LayoutManagaer
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         viewall_item.setLayoutManager(LayoutManagaer);
 
-        admin_allAdapter = new Admin_allAdapter(this,arrayLists);
-        viewall_item.setAdapter(admin_allAdapter);
+        manageItemadapter = new ManageItem(this,arrayLists);
+        viewall_item.setAdapter(manageItemadapter);
 
         back=findViewById(R.id.back);
         add=findViewById(R.id.add);
@@ -56,16 +61,13 @@ public class View_all_list extends AppCompatActivity implements Admin_item_inter
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(View_all_list.this, Add_items.class);
+                Intent i=new Intent(Manage_item.this, Add_items.class);
                 startActivity(i);
             }
         });
-
-        if (GlobalClass.isNetworkConnected(View_all_list.this)) {
+        if (GlobalClass.isNetworkConnected(Manage_item.this)) {
             WebApicall webApicall = new WebApicall();
             webApicall.items_list(this, CSPreferences.readString(this,"sessioniid"),"",this);
-
-
         } else {
 
             Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
@@ -74,21 +76,20 @@ public class View_all_list extends AppCompatActivity implements Admin_item_inter
         }
 
 
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
 
                 Log.d("fddfsd",s);
 
-                admin_allAdapter.getFilter().filter(s);
+                manageItemadapter.getFilter().filter(s);
 
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                admin_allAdapter.getFilter().filter(s);
+                manageItemadapter.getFilter().filter(s);
 
                 return false;
             }

@@ -1,7 +1,5 @@
 package com.example.finalproject;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,16 +9,16 @@ import android.widget.RadioGroup;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.example.finalproject.MainActivity;
-import com.example.finalproject.R;
-import com.example.finalproject.adpter.Admin_allAdapter;
 import com.example.finalproject.adpter.User_item_Adapter;
 import com.example.finalproject.interface_api.Admin_item_interface;
-import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.interface_api.WebApicall;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
 
 import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class User_ItemList extends AppCompatActivity implements Admin_item_interface {
     RecyclerView viewall_item;
@@ -52,12 +50,17 @@ public class User_ItemList extends AppCompatActivity implements Admin_item_inter
         book = findViewById(R.id.book);
 
         elect.setChecked(true);
+        if (GlobalClass.isNetworkConnected(User_ItemList.this)) {
+
+            WebApicall webApicall = new WebApicall();
+            webApicall.items_list(this, "","1",this);
+
+        } else {
+
+            Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
 
 
-        WebApicall webApicall = new WebApicall();
-        webApicall.items_list(this, "","1",this);
-
-
+        }
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -113,14 +116,32 @@ public class User_ItemList extends AppCompatActivity implements Admin_item_inter
 
     private void check(String s) {
         if (s.equals("1")){
-            WebApicall webApicall = new WebApicall();
-            webApicall.items_list(this, "","1",this);
+
+            if (GlobalClass.isNetworkConnected(User_ItemList.this)) {
+
+                WebApicall webApicall = new WebApicall();
+                webApicall.items_list(this, "","1",this);
+            } else {
+
+                Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
+
+
+            }
+
         }else {
-            WebApicall webApicall = new WebApicall();
-            webApicall.items_list(this, "","2",this);
+            if (GlobalClass.isNetworkConnected(User_ItemList.this)) {
+
+                WebApicall webApicall = new WebApicall();
+                webApicall.items_list(this, "","2",this);
+            } else {
+
+                Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
+
+
+            }
+
         }
 
     }
 
 }
-

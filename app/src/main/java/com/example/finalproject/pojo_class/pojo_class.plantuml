@@ -1,0 +1,207 @@
+@startuml
+
+title __POJO_CLASS's Class Diagram__\n
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.Add_item_pojo {
+          - error : Boolean
+          - message : String
+          - status : Integer
+          + getError()
+          + getMessage()
+          + getStatus()
+          + setError()
+          + setMessage()
+          + setStatus()
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.AdminItems_list_pojo {
+          - error : Boolean
+          - itemList : List<ItemList>
+          - message : String
+          - status : Integer
+          + getError()
+          + getItemList()
+          + getMessage()
+          + getStatus()
+          + setError()
+          + setItemList()
+          + setMessage()
+          + setStatus()
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.AdminItems_list_pojo.ItemList {
+          - createdAt : String
+          - description : String
+          - id : Integer
+          - image : String
+          - itemissuedstatus : Integer
+          - name : String
+          - noOfItems : Integer
+          - type : Integer
+          - updatedAt : String
+          - userId : Integer
+          + getCreatedAt()
+          + getDescription()
+          + getId()
+          + getImage()
+          + getItemissuedstatus()
+          + getName()
+          + getNoOfItems()
+          + getType()
+          + getUpdatedAt()
+          + getUserId()
+          + setCreatedAt()
+          + setDescription()
+          + setId()
+          + setImage()
+          + setName()
+          + setNoOfItems()
+          + setType()
+          + setUpdatedAt()
+          + setUserId()
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.Issued_item_list_pojo {
+          - error : Boolean
+          - issuedList : List<IssuedList>
+          - message : String
+          - status : Integer
+          + getError()
+          + getIssuedList()
+          + getMessage()
+          + getStatus()
+          + setError()
+          + setIssuedList()
+          + setMessage()
+          + setStatus()
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.Issued_item_list_pojo.IssuedList {
+          - createdAt : String
+          - description : String
+          - id : Integer
+          - image : String
+          - issuedDate : String
+          - name : String
+          - noOfItems : Integer
+          - returnDate : String
+          - returnstatus : Integer
+          - type : Integer
+          - updatedAt : String
+          - userId : Integer
+          + getCreatedAt()
+          + getDescription()
+          + getId()
+          + getImage()
+          + getIssuedDate()
+          + getName()
+          + getNoOfItems()
+          + getReturnDate()
+          + getReturnstatus()
+          + getType()
+          + getUpdatedAt()
+          + getUserId()
+          + setCreatedAt()
+          + setDescription()
+          + setId()
+          + setImage()
+          + setIssuedDate()
+          + setName()
+          + setNoOfItems()
+          + setReturnDate()
+          + setReturnstatus()
+          + setType()
+          + setUpdatedAt()
+          + setUserId()
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.Register_model {
+          - message : String
+          - status : Integer
+          - success : Boolean
+          + getMessage()
+          + getProfile()
+          + getStatus()
+          + getSuccess()
+          + setMessage()
+          + setProfile()
+          + setStatus()
+          + setSuccess()
+      }
+    }
+  }
+  
+
+  namespace com.example.finalproject {
+    namespace pojo_class {
+      class com.example.finalproject.pojo_class.Register_model.Profile {
+          - address : String
+          - email : String
+          - image : String
+          - phone : String
+          - sessionId : String
+          - userId : Integer
+          - userName : String
+          - usertype : String
+          + getAddress()
+          + getEmail()
+          + getImage()
+          + getPhone()
+          + getSessionId()
+          + getUserId()
+          + getUserName()
+          + getUsertype()
+          + setAddress()
+          + setEmail()
+          + setImage()
+          + setPhone()
+          + setSessionId()
+          + setUserId()
+          + setUserName()
+          + setUsertype()
+      }
+    }
+  }
+  
+
+  com.example.finalproject.pojo_class.AdminItems_list_pojo +-down- com.example.finalproject.pojo_class.AdminItems_list_pojo.ItemList
+  com.example.finalproject.pojo_class.Issued_item_list_pojo +-down- com.example.finalproject.pojo_class.Issued_item_list_pojo.IssuedList
+  com.example.finalproject.pojo_class.Register_model o-- com.example.finalproject.pojo_class.Register_model.Profile : profile
+  com.example.finalproject.pojo_class.Register_model +-down- com.example.finalproject.pojo_class.Register_model.Profile
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
