@@ -61,7 +61,20 @@ public class MainActivity extends AppCompatActivity {
                 builder.setTitle("Are you sure you want to log out?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Logut(MainActivity.this, CSPreferences.readString(MainActivity.this,"sessioniid"));
+                        if (GlobalClass.isNetworkConnected(MainActivity.this)) {
+
+
+
+                            Logut(MainActivity.this, CSPreferences.readString(MainActivity.this,"sessioniid"));
+
+
+                        } else {
+
+                            Toast.makeText(MainActivity.this, R.string.nointernet, Toast.LENGTH_LONG).show();
+
+
+                        }
+
                     }
                 })
                         .setNegativeButton("cancel", new DialogInterface.OnClickListener() {

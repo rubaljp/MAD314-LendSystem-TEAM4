@@ -49,6 +49,7 @@ public class SignUp extends AppCompatActivity {
         password=findViewById(R.id.password);
         c_password=findViewById(R.id.c_password);
         buttonsubmit=findViewById(R.id.buttonsubmit);
+        admin=findViewById(R.id.admin);
 
         cancal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +63,9 @@ public class SignUp extends AppCompatActivity {
                 validaiton();
             }
         });
+
+
+        admin.setChecked(true);
 
     }
 
@@ -80,33 +84,41 @@ public class SignUp extends AppCompatActivity {
             admin=findViewById(selectedId);
 
             if (admin.getText().toString().equals("Admin")){
+                if (GlobalClass.isNetworkConnected(SignUp.this)) {
+                    HashMap<String,String> hashMap = new HashMap<>();
+                    hashMap.put("name",name.getText().toString());
+                    hashMap.put("email",email.getText().toString());
+                    hashMap.put("phone",password.getText().toString());
+                    hashMap.put("password",password.getText().toString());
+                    hashMap.put("confirm_password",c_password.getText().toString());
+                    hashMap.put("usertype","2");
+                    hashMap.put("device_type","1");
+                    hashMap.put("device_token","11111111111111111111");
 
-                HashMap<String,String> hashMap = new HashMap<>();
-                hashMap.put("name",name.getText().toString());
-                hashMap.put("email",email.getText().toString());
-                hashMap.put("phone",password.getText().toString());
-                hashMap.put("password",password.getText().toString());
-                hashMap.put("confirm_password",c_password.getText().toString());
-                hashMap.put("usertype","2");
-                hashMap.put("device_type","1");
-                hashMap.put("device_token","11111111111111111111");
 
+                    registerUser(SignUp.this, hashMap);
+                } else {
 
-                registerUser(SignUp.this, hashMap);
-
+                    Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
+                }
             }else  if (admin.getText().toString().equals("User")){
-                HashMap<String,String> hashMap = new HashMap<>();
-                hashMap.put("name",name.getText().toString());
-                hashMap.put("email",email.getText().toString());
-                hashMap.put("phone",password.getText().toString());
-                hashMap.put("password",password.getText().toString());
-                hashMap.put("confirm_password",c_password.getText().toString());
-                hashMap.put("usertype","1");
-                hashMap.put("device_type","1");
-                hashMap.put("device_token","11111111111111111111");
+                if (GlobalClass.isNetworkConnected(SignUp.this)) {
+                    HashMap<String,String> hashMap = new HashMap<>();
+                    hashMap.put("name",name.getText().toString());
+                    hashMap.put("email",email.getText().toString());
+                    hashMap.put("phone",password.getText().toString());
+                    hashMap.put("password",password.getText().toString());
+                    hashMap.put("confirm_password",c_password.getText().toString());
+                    hashMap.put("usertype","1");
+                    hashMap.put("device_type","1");
+                    hashMap.put("device_token","11111111111111111111");
 
 
-                registerUser(SignUp.this, hashMap);
+                    registerUser(SignUp.this, hashMap);
+                } else {
+
+                    Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
+                }
             }
 
 

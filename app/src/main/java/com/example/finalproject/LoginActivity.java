@@ -1,6 +1,5 @@
 package com.example.finalproject;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -54,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         user = findViewById(R.id.user);
         forgot = findViewById(R.id.forgot);
         group = findViewById(R.id.group);
+        admin.setChecked(true);
 
         donotaccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,26 +95,39 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("dfsdfsdf", user.getText().toString());
             if (admin.getText().toString().equals("Admin")) {
 
-                HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("email", email.getText().toString());
-                hashMap.put("password", password.getText().toString());
-                hashMap.put("usertype", "2");
-                hashMap.put("device_type", "1");
-                hashMap.put("device_token", "11111111111111111111");
+
+                if (GlobalClass.isNetworkConnected(LoginActivity.this)) {
+
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    hashMap.put("email", email.getText().toString());
+                    hashMap.put("password", password.getText().toString());
+                    hashMap.put("usertype", "2");
+                    hashMap.put("device_type", "1");
+                    hashMap.put("device_token", "11111111111111111111");
 
 
-                LoginApi(LoginActivity.this, hashMap);
+                    LoginApi(LoginActivity.this, hashMap);
+                } else {
+
+                    Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
+                }
+
+
 
             } else if (admin.getText().toString().equals("User")) {
-                HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("email", email.getText().toString());
-                hashMap.put("password", password.getText().toString());
-                hashMap.put("usertype", "1");
-                hashMap.put("device_type", "1");
-                hashMap.put("device_token", "11111111111111111111");
+                if (GlobalClass.isNetworkConnected(LoginActivity.this)) {
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    hashMap.put("email", email.getText().toString());
+                    hashMap.put("password", password.getText().toString());
+                    hashMap.put("usertype", "1");
+                    hashMap.put("device_type", "1");
+                    hashMap.put("device_token", "11111111111111111111");
 
+                    LoginApi(LoginActivity.this, hashMap);
+                } else {
 
-                LoginApi(LoginActivity.this, hashMap);
+                    Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
+                }
             }
 
 
