@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.finalproject">
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19"/>
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -13,16 +14,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Manage_item"></activity>
+        android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".admin.Manage_item"></activity>
+        <activity android:name=".admin.Edit_item" />
         <activity android:name=".Forgot_password" />
-        <activity android:name=".BookIssue" />
-        <activity android:name=".User_ItemList" />
-        <activity android:name=".Show_item_detail" />
-        <activity android:name=".Admin_MainActivity" />
+        <activity android:name=".user.BookIssue" />
+        <activity android:name=".user.Show_item_detail" />
+        <activity android:name=".user.User_ItemList" />
+        <activity android:name=".admin.Add_items" />
+        <activity android:name=".admin.View_all_list" />
+        <activity android:name=".ListItem" />
+        <activity android:name=".admin.Admin_MainActivity" />
         <activity android:name=".ResetPassword" />
-        <activity android:name=".Add_items" />
-        <activity android:name=".EmptyPage" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".LoginActivity"

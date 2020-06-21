@@ -3,7 +3,7 @@
 title __FINALPROJECT's Class Diagram__\n
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Add_items {
+    class com.example.finalproject.admin.Add_items {
         ~ back : ImageView
         ~ buttonsubmit : Button
         ~ discraption : EditText
@@ -31,7 +31,7 @@ title __FINALPROJECT's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Admin_MainActivity {
+    class com.example.finalproject.admin.Admin_MainActivity {
         ~ Add_item : TextView
         ~ Logout : TextView
         ~ pd : ProgressDialog
@@ -45,7 +45,7 @@ title __FINALPROJECT's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.BookIssue {
+    class com.example.finalproject.user.BookIssue {
         ~ arrayLists : ArrayList<IssuedList>
         ~ back : ImageView
         ~ bookissue : RecyclerView
@@ -56,7 +56,7 @@ title __FINALPROJECT's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Edit_item {
+    class com.example.finalproject.admin.Edit_item {
         ~ back : ImageView
         ~ book : RadioButton
         ~ buttonsubmit : Button
@@ -164,7 +164,7 @@ title __FINALPROJECT's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Show_item_detail {
+    class com.example.finalproject.user.Show_item_detail {
         # onCreate()
     }
   }
@@ -193,7 +193,7 @@ title __FINALPROJECT's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.User_ItemList {
+    class com.example.finalproject.user.User_ItemList {
         ~ arrayLists : ArrayList<ItemList>
         ~ book : RadioButton
         ~ elect : RadioButton
@@ -219,7 +219,7 @@ title __FINALPROJECT's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.View_all_list {
+    class com.example.finalproject.admin.View_all_list {
         ~ add : ImageView
         ~ arrayLists : ArrayList<ItemList>
         ~ back : ImageView
@@ -231,28 +231,28 @@ title __FINALPROJECT's Class Diagram__\n
   }
   
 
-  com.example.finalproject.Add_items -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.Admin_MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.BookIssue .up.|> com.example.finalproject.interface_api.Issued_item_list_interface
-  com.example.finalproject.BookIssue -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.BookIssue o-- com.example.finalproject.adpter.Issue_bookAdapter : issue_bookAdapter
-  com.example.finalproject.Edit_item -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.admin.Add_items -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.admin.Admin_MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.user.BookIssue .up.|> com.example.finalproject.interface_api.Issued_item_list_interface
+  com.example.finalproject.user.BookIssue -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.user.BookIssue o-- com.example.finalproject.adpter.Issue_bookAdapter : issue_bookAdapter
+  com.example.finalproject.admin.Edit_item -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.EmptyPage -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.FlashScreen -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.Forgot_password -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.LoginActivity -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.ResetPassword -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.Show_item_detail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.user.Show_item_detail -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.SignUp -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.User_ItemList .up.|> com.example.finalproject.interface_api.Admin_item_interface
-  com.example.finalproject.User_ItemList -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.User_ItemList o-- com.example.finalproject.adpter.User_item_Adapter : user_item_adapter
+  com.example.finalproject.user.User_ItemList .up.|> com.example.finalproject.interface_api.Admin_item_interface
+  com.example.finalproject.user.User_ItemList -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.user.User_ItemList o-- com.example.finalproject.adpter.User_item_Adapter : user_item_adapter
   com.example.finalproject.ViewAllItems -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.ViewAllItems o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
-  com.example.finalproject.View_all_list .up.|> com.example.finalproject.interface_api.Admin_item_interface
-  com.example.finalproject.View_all_list -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.View_all_list o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
+  com.example.finalproject.admin.View_all_list .up.|> com.example.finalproject.interface_api.Admin_item_interface
+  com.example.finalproject.admin.View_all_list -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.admin.View_all_list o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
 
 
 right footer

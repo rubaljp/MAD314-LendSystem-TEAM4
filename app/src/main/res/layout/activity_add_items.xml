@@ -66,7 +66,7 @@
 
 
     <RadioGroup
-        android:id="@+id/group"
+         android:id="@+id/group"
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -98,13 +98,14 @@
         android:ems="10"
         android:paddingLeft="10dp"
         android:gravity="center|left"
-        android:hint="tital"
+        android:hint="title"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-    <EditText
+   <EditText
+       android:visibility="gone"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -113,6 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+       android:text="1"
         android:paddingLeft="10dp"
         android:gravity="center|left"
         android:hint="No of Item"
@@ -135,34 +137,34 @@
         android:layout_height="80dp"
         android:ems="10"
         android:gravity="center|left|top"
-        android:hint="discraption"
+        android:hint="discription"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <LinearLayout
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:scaleType="fitXY"
-            android:id="@+id/iamgevirew"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/ic_image_black_24dp"/>
-        <ImageView
-            android:layout_marginLeft="20dp"
-            android:id="@+id/take_image"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_add_a_photo_black_24dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
-    </LinearLayout>
+<LinearLayout
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/iamgevirew"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_image_black_24dp"/>
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:id="@+id/take_image"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_add_a_photo_black_24dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+</LinearLayout>
 
     <Button
         android:layout_gravity="center"
@@ -172,7 +174,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@drawable/backgroundbutton"
-        android:text="Submit"
+        android:text="Save"
         />
 
 

@@ -1,9 +1,5 @@
 package com.example.finalproject;
 
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,9 +13,11 @@ import android.widget.Toast;
 import com.example.finalproject.interface_api.ApiClient;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.pojo_class.Add_item_pojo;
-import com.example.finalproject.BookIssue;
-import com.example.finalproject.User_ItemList;
+import com.example.finalproject.user.BookIssue;
+import com.example.finalproject.user.User_ItemList;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                            Logut(MainActivity.this, CSPreferences.readString(MainActivity.this,"sessioniid"));
+                        Logut(MainActivity.this, CSPreferences.readString(MainActivity.this,"sessioniid"));
 
 
                         } else {
@@ -81,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.dismiss();
 
-                            }
+                                                            }
 
-                        });
+                                });
 
                 builder.show();
 

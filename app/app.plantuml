@@ -3,25 +3,25 @@
 title __APP's Class Diagram__\n
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Add_items {
+    class com.example.finalproject.admin.Add_items {
     }
   }
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Admin_MainActivity {
+    class com.example.finalproject.admin.Admin_MainActivity {
     }
   }
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.BookIssue {
+    class com.example.finalproject.user.BookIssue {
     }
   }
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Edit_item {
+    class com.example.finalproject.admin.Edit_item {
     }
   }
   
@@ -69,7 +69,7 @@ title __APP's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Show_item_detail {
+    class com.example.finalproject.user.Show_item_detail {
     }
   }
   
@@ -81,7 +81,7 @@ title __APP's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.User_ItemList {
+    class com.example.finalproject.user.User_ItemList {
     }
   }
   
@@ -93,7 +93,7 @@ title __APP's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.View_all_list {
+    class com.example.finalproject.admin.View_all_list {
     }
   }
   
@@ -210,28 +210,28 @@ title __APP's Class Diagram__\n
   }
   
 
-  com.example.finalproject.Add_items -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.Admin_MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.BookIssue .up.|> com.example.finalproject.interface_api.Issued_item_list_interface
-  com.example.finalproject.BookIssue -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.BookIssue o-- com.example.finalproject.adpter.Issue_bookAdapter : issue_bookAdapter
-  com.example.finalproject.Edit_item -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.admin.Add_items -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.admin.Admin_MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.user.BookIssue .up.|> com.example.finalproject.interface_api.Issued_item_list_interface
+  com.example.finalproject.user.BookIssue -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.user.BookIssue o-- com.example.finalproject.adpter.Issue_bookAdapter : issue_bookAdapter
+  com.example.finalproject.admin.Edit_item -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.EmptyPage -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.FlashScreen -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.Forgot_password -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.LoginActivity -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.ResetPassword -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.Show_item_detail -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.user.Show_item_detail -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.SignUp -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.User_ItemList .up.|> com.example.finalproject.interface_api.Admin_item_interface
-  com.example.finalproject.User_ItemList -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.User_ItemList o-- com.example.finalproject.adpter.User_item_Adapter : user_item_adapter
+  com.example.finalproject.user.User_ItemList .up.|> com.example.finalproject.interface_api.Admin_item_interface
+  com.example.finalproject.user.User_ItemList -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.user.User_ItemList o-- com.example.finalproject.adpter.User_item_Adapter : user_item_adapter
   com.example.finalproject.ViewAllItems -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.ViewAllItems o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
-  com.example.finalproject.View_all_list .up.|> com.example.finalproject.interface_api.Admin_item_interface
-  com.example.finalproject.View_all_list -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.View_all_list o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
+  com.example.finalproject.admin.View_all_list .up.|> com.example.finalproject.interface_api.Admin_item_interface
+  com.example.finalproject.admin.View_all_list -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.admin.View_all_list o-- com.example.finalproject.adpter.Admin_allAdapter : admin_allAdapter
   com.example.finalproject.adpter.Admin_allAdapter .up.|> android.widget.Filterable
   com.example.finalproject.adpter.Admin_allAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
   com.example.finalproject.adpter.Issue_bookAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter

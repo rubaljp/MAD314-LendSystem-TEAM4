@@ -53,16 +53,16 @@ public interface ApiInterface {
                                      @Part MultipartBody.Part  file);
 
 
-    @Multipart
+   @Multipart
     @POST("update_del_items")
     Call<Add_item_pojo> update_del_items(@Part("session_id") RequestBody session_id,
-                                         @Part("name")RequestBody name,
-                                         @Part("description")RequestBody description,
-                                         @Part("no_of_items")RequestBody no_of_items,
-                                         @Part("type")RequestBody type,
-                                         @Part("item_id")RequestBody item_id,
-                                         @Part("item_type")RequestBody item_type,
-                                         @Part MultipartBody.Part  file);
+                                     @Part("name")RequestBody name,
+                                     @Part("description")RequestBody description,
+                                     @Part("no_of_items")RequestBody no_of_items,
+                                     @Part("type")RequestBody type,
+                                     @Part("item_id")RequestBody item_id,
+                                     @Part("item_type")RequestBody item_type,
+                                     @Part MultipartBody.Part  file);
 
 
     @FormUrlEncoded

@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.finalproject.GlobalClass;
 import com.example.finalproject.LoginActivity;
 import com.example.finalproject.MainActivity;
 import com.example.finalproject.SignUp;
-
-import com.example.finalproject.Admin_MainActivity;
+import com.example.finalproject.admin.Admin_MainActivity;
+import com.example.finalproject.admin.Edit_item;
+import com.example.finalproject.admin.Manage_item;
 import com.example.finalproject.pojo_class.Add_item_pojo;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
 import com.example.finalproject.pojo_class.Issued_item_list_pojo;
@@ -81,12 +84,12 @@ public class WebApicall {
 
                 try {
                     if (response.body().getStatus() ==  200) {
-                        GlobalClass.showtost(context, "" + response.body().getMessage());
+                        GlobalClass.showtost(context, "" +response.body().getMessage());
                     } else {
                         GlobalClass.showtost(context, "" + response.body().getMessage());
                     }
                 }catch (Exception e){
-                    GlobalClass.showtost(context, "" + "Item Already Issue");
+                  GlobalClass.showtost(context, "You reached the limit for issued item 5");
 
                 }
 
@@ -160,12 +163,13 @@ public class WebApicall {
                 dailoghide(context);
                 t.printStackTrace();
                 Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("sdasdas",t.toString());
                 Log.d("dddddd", "onFailure: " + t.getMessage());
             }
         });
     }
 
-    public void update_del_items(final Context context, RequestBody session_id, RequestBody name, RequestBody description, RequestBody no_of_items, RequestBody type , RequestBody item_id , RequestBody item_type , MultipartBody.Part image) {
+    public void update_del_items(final Context context, RequestBody session_id, RequestBody name, RequestBody description, RequestBody no_of_items, RequestBody type , RequestBody item_id , RequestBody item_type , MultipartBody.Part image, final Edit_item mainActivity) {
         dailogshow(context);
         Call<Add_item_pojo> userpost_responseCall = ApiClient.getClient().update_del_items(session_id,name,description,no_of_items,type,item_id,item_type,image);
         userpost_responseCall.enqueue(new Callback<Add_item_pojo>() {
@@ -175,6 +179,9 @@ public class WebApicall {
 
                 if (response.body().getStatus() ==  200) {
                     GlobalClass.showtost(context, "" + response.body().getMessage());
+                    //context.startActivity(new Intent(context, Manage_item.class));
+                   // mainActivity.finish();
+
 
                 } else {
                     GlobalClass.showtost(context, "" + response.body().getMessage());
@@ -222,7 +229,8 @@ public class WebApicall {
         });
     }
 
-    public void return_issued_item(final Context context, String sessionid,String item_id) {
+    public void return_issued_item(final Context context, String sessionid, String item_id, final RecyclerView recyclerView,
+                                   final int postion, final ArrayList<Issued_item_list_pojo.IssuedList> arrayLists) {
         dailogshow(context);
         Call<Add_item_pojo> userpost_responseCall = ApiClient.getClient().return_issued_item(sessionid,item_id);
         userpost_responseCall.enqueue(new Callback<Add_item_pojo>() {
@@ -234,6 +242,9 @@ public class WebApicall {
                     if (response.body().getStatus() ==  200) {
 
                         GlobalClass.showtost(context, "" + response.body().getMessage());
+                        arrayLists.remove(postion);
+                        recyclerView.getAdapter().notifyItemRemoved(postion);
+                        recyclerView.getAdapter().notifyItemRangeChanged(postion, arrayLists.size());
                     } else {
                         GlobalClass.showtost(context, "" + response.body().getMessage());
                     }

@@ -140,4 +140,3 @@ public class Register_model {
         }
     }
 }
-

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Show_item_detail"
+    tools:context=".user.Show_item_detail"
     android:orientation="vertical">
     <RelativeLayout android:layout_width="match_parent"
         android:id="@+id/toolbar"
@@ -51,57 +51,66 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textColor="@color/red"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTE :- Students get penalty if they return the book late"/>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardview"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        card_view:cardUseCompatPadding="true">
+        <RelativeLayout
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            card_view:cardElevation="5dp"
-            app:cardCornerRadius="5dp"
-            card_view:cardUseCompatPadding="true">
-            <RelativeLayout
-                android:layout_margin="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:layout_height="wrap_content">
 
 
-                <ImageView
-                    android:scaleType="fitXY"
-                    android:layout_centerVertical="true"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/logo"
-                    android:id="@+id/item_pic"/>
+            <ImageView
+                android:scaleType="fitXY"
+                android:layout_centerVertical="true"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/logo"
+                android:id="@+id/item_pic"/>
 
-                <TextView
-                    android:layout_marginLeft="15dp"
-                    android:id="@+id/tital"
-                    android:layout_toRightOf="@+id/item_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Titel"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:id="@+id/tital"
+                android:layout_toRightOf="@+id/item_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Titel"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@+id/edit_delte"
-                    android:layout_below="@+id/tital"
-                    android:layout_marginLeft="15dp"
-                    android:id="@+id/discraption"
-                    android:layout_toRightOf="@+id/item_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/edit_delte"
+                android:layout_below="@+id/tital"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/discraption"
+                android:layout_toRightOf="@+id/item_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley "
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
 
 
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
     <TextView
@@ -118,7 +127,7 @@
         android:inputType="textPersonName"
         />
 
-    <TextView
+ <TextView
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"

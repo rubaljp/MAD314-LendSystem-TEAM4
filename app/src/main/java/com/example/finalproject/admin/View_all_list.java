@@ -1,4 +1,5 @@
-package com.example.finalproject;
+package com.example.finalproject.admin;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;

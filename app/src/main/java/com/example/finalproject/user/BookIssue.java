@@ -1,22 +1,24 @@
-package com.example.finalproject;
+package com.example.finalproject.user;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.finalproject.GlobalClass;
+import com.example.finalproject.R;
 import com.example.finalproject.adpter.Issue_bookAdapter;
+import com.example.finalproject.adpter.User_item_Adapter;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.interface_api.Issued_item_list_interface;
 import com.example.finalproject.interface_api.WebApicall;
 import com.example.finalproject.pojo_class.Issued_item_list_pojo;
 
 import java.util.ArrayList;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class BookIssue extends AppCompatActivity implements Issued_item_list_interface {
     RecyclerView bookissue;
@@ -37,7 +39,7 @@ public class BookIssue extends AppCompatActivity implements Issued_item_list_int
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         bookissue.setLayoutManager(LayoutManagaer);
 
-        issue_bookAdapter = new Issue_bookAdapter(this,arrayLists);
+        issue_bookAdapter = new Issue_bookAdapter(this,arrayLists,bookissue);
         bookissue.setAdapter(issue_bookAdapter);
 
         back=findViewById(R.id.back);
@@ -49,11 +51,8 @@ public class BookIssue extends AppCompatActivity implements Issued_item_list_int
         });
 
         if (GlobalClass.isNetworkConnected(BookIssue.this)) {
-
-
-
-            WebApicall webApicall =new WebApicall();
-            webApicall.issued_item_list(this, CSPreferences.readString(this,"sessioniid"),this);
+        WebApicall webApicall =new WebApicall();
+        webApicall.issued_item_list(this, CSPreferences.readString(this,"sessioniid"),this);
         } else {
 
             Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin_MainActivity"
+    tools:context=".admin.Admin_MainActivity"
     android:gravity="center|top"
     android:orientation="vertical">
 
@@ -27,26 +27,26 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/view_item"
-        android:text="View Item"
+        android:text="View Items"
         android:textSize="14dp"
         android:textStyle="bold"
         android:gravity="center"
         />
-    <TextView
+   <TextView
         android:layout_marginTop="20dp"
         android:background="@drawable/backgroundbutton"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/manage_item"
-        android:text="Manage Item"
+        android:text="Manage Items"
         android:textSize="14dp"
         android:textStyle="bold"
         android:gravity="center"
         />
 
-    <TextView
+  <TextView
         android:layout_marginTop="16dp"
-        android:background="@drawable/backgroundbutton"
+      android:background="@drawable/backgroundbutton"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/Add_item"
@@ -56,9 +56,9 @@
         android:gravity="center"
         />
 
-    <TextView
+ <TextView
         android:layout_marginTop="16dp"
-        android:background="@drawable/backgroundbutton"
+     android:background="@drawable/backgroundbutton"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:id="@+id/Logout"

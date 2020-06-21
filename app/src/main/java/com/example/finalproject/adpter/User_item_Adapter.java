@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.finalproject.R;
-import com.example.finalproject.Show_item_detail;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
+import com.example.finalproject.user.Show_item_detail;
 
 import java.util.ArrayList;
 
@@ -49,19 +49,33 @@ public class User_item_Adapter extends RecyclerView.Adapter<User_item_Adapter.Vi
                 .into(holder.item_pic);
         holder.tital.setText(filter.get(position).getName());
         holder.discraption.setText(filter.get(position).getDescription());
+        holder.avaliable.setVisibility(View.GONE);
+
+        if (filter.get(position).getItemIssuedStatus() == 1){
+            holder.fine.setText("This "+filter.get(position).getName()+" already Borrowed");
+            holder.fine.setVisibility(View.VISIBLE);
+        }else {
+
+        }
+
+
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                context.startActivity(new Intent(context, Show_item_detail.class).putExtra("tital",filter.get(position).getName())
-                        .putExtra("total_item",filter.get(position).getNoOfItems()).putExtra("discraption",filter.get(position).getDescription())
-                        .putExtra("itemid",filter.get(position).getId()).putExtra("edit","edit").
-                                putExtra("item_type",filter.get(position).getType())
-                        .putExtra("image",filter.get(position).getImage()));
+                if (filter.get(position).getItemIssuedStatus() == 1){
+
+                }else {
+                    context.startActivity(new Intent(context, Show_item_detail.class).putExtra("tital",filter.get(position).getName())
+                            .putExtra("total_item",filter.get(position).getNoOfItems()).putExtra("discraption",filter.get(position).getDescription())
+                            .putExtra("itemid",filter.get(position).getId()).putExtra("edit","edit").
+                                    putExtra("item_type",filter.get(position).getType())
+                            .putExtra("image",filter.get(position).getImage()));
+                }
             }
         });
-
     }
 
 
@@ -107,7 +121,7 @@ public class User_item_Adapter extends RecyclerView.Adapter<User_item_Adapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView item_pic;
-        public TextView tital,discraption,edit,delete;
+        public TextView tital,discraption,edit,delete,avaliable,fine;
         public ViewHolder(View itemView) {
             super(itemView);
 
@@ -116,6 +130,8 @@ public class User_item_Adapter extends RecyclerView.Adapter<User_item_Adapter.Vi
             discraption=itemView.findViewById(R.id.discraption);
             edit=itemView.findViewById(R.id.edit);
             delete=itemView.findViewById(R.id.delete);
+            avaliable=itemView.findViewById(R.id.avaliable);
+            fine=itemView.findViewById(R.id.fine);
         }
     }
 }

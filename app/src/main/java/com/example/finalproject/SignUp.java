@@ -1,8 +1,5 @@
 package com.example.finalproject;
 
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,13 +12,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.finalproject.Admin_MainActivity;
+import com.example.finalproject.admin.Admin_MainActivity;
 import com.example.finalproject.interface_api.ApiClient;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.pojo_class.Register_model;
 
 import java.util.HashMap;
 
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,44 +75,47 @@ public class SignUp extends AppCompatActivity {
             GlobalClass.showtost(this," Please Enter Phone Number");
         }else if (email.getText().toString().length()  == 0){
             GlobalClass.showtost(this," Please enter valid email");
-        }else if (password.getText().toString().length()  == 0){
+        }else if (password.getText().toString().length()  < 5){
             GlobalClass.showtost(this," Please enter password");
+
         }else if (c_password.getText().toString().equals(password.getText().toString())){
             int selectedId=group.getCheckedRadioButtonId();
             admin=findViewById(selectedId);
 
             if (admin.getText().toString().equals("Admin")){
                 if (GlobalClass.isNetworkConnected(SignUp.this)) {
-                    HashMap<String,String> hashMap = new HashMap<>();
-                    hashMap.put("name",name.getText().toString());
-                    hashMap.put("email",email.getText().toString());
-                    hashMap.put("phone",password.getText().toString());
-                    hashMap.put("password",password.getText().toString());
-                    hashMap.put("confirm_password",c_password.getText().toString());
-                    hashMap.put("usertype","2");
-                    hashMap.put("device_type","1");
-                    hashMap.put("device_token","11111111111111111111");
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put("name",name.getText().toString());
+                hashMap.put("email",email.getText().toString());
+                hashMap.put("phone",password.getText().toString());
+                hashMap.put("password",password.getText().toString());
+                hashMap.put("confirm_password",c_password.getText().toString());
+                hashMap.put("usertype","2");
+                hashMap.put("device_type","1");
+                hashMap.put("device_token","11111111111111111111");
 
 
-                    registerUser(SignUp.this, hashMap);
+                registerUser(SignUp.this, hashMap);
                 } else {
 
                     Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
                 }
             }else  if (admin.getText().toString().equals("User")){
+
                 if (GlobalClass.isNetworkConnected(SignUp.this)) {
-                    HashMap<String,String> hashMap = new HashMap<>();
-                    hashMap.put("name",name.getText().toString());
-                    hashMap.put("email",email.getText().toString());
-                    hashMap.put("phone",password.getText().toString());
-                    hashMap.put("password",password.getText().toString());
-                    hashMap.put("confirm_password",c_password.getText().toString());
-                    hashMap.put("usertype","1");
-                    hashMap.put("device_type","1");
-                    hashMap.put("device_token","11111111111111111111");
+                HashMap<String,String> hashMap = new HashMap<>();
+                hashMap.put("name",name.getText().toString());
+                hashMap.put("email",email.getText().toString());
+                hashMap.put("phone",password.getText().toString());
+                hashMap.put("password",password.getText().toString());
+                hashMap.put("confirm_password",c_password.getText().toString());
+                hashMap.put("usertype","1");
+                hashMap.put("device_type","1");
+                hashMap.put("device_token","11111111111111111111");
 
 
-                    registerUser(SignUp.this, hashMap);
+                registerUser(SignUp.this, hashMap);
+
                 } else {
 
                     Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();

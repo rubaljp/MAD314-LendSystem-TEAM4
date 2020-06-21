@@ -1,5 +1,8 @@
-package com.example.finalproject;
+package com.example.finalproject.user;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,24 +12,25 @@ import android.widget.RadioGroup;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.finalproject.GlobalClass;
+import com.example.finalproject.MainActivity;
+import com.example.finalproject.R;
+import com.example.finalproject.adpter.Admin_allAdapter;
 import com.example.finalproject.adpter.User_item_Adapter;
 import com.example.finalproject.interface_api.Admin_item_interface;
+import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.interface_api.WebApicall;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
 
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 public class User_ItemList extends AppCompatActivity implements Admin_item_interface {
     RecyclerView viewall_item;
-    User_item_Adapter user_item_adapter;
-    ArrayList<AdminItems_list_pojo.ItemList>  arrayLists = new ArrayList<>();
-    RadioGroup radio_group;
-    RadioButton elect,book;
-    SearchView searchView;
+      User_item_Adapter user_item_adapter;
+      ArrayList<AdminItems_list_pojo.ItemList>  arrayLists = new ArrayList<>();
+       RadioGroup radio_group;
+       RadioButton elect,book;
+       SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,7 @@ public class User_ItemList extends AppCompatActivity implements Admin_item_inter
         if (GlobalClass.isNetworkConnected(User_ItemList.this)) {
 
             WebApicall webApicall = new WebApicall();
-            webApicall.items_list(this, "","1",this);
+            webApicall.items_list(this,CSPreferences.readString(this,"sessioniid"),"1",this);
 
         } else {
 
@@ -62,30 +66,30 @@ public class User_ItemList extends AppCompatActivity implements Admin_item_inter
 
         }
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String s) {
 
-                Log.d("fddfsd",s);
+                        Log.d("fddfsd",s);
 
-                user_item_adapter.getFilter().filter(s);
+                        user_item_adapter.getFilter().filter(s);
 
-                return false;
-            }
+                        return false;
+                    }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-                user_item_adapter.getFilter().filter(s);
+                    @Override
+                    public boolean onQueryTextChange(String s) {
+                        user_item_adapter.getFilter().filter(s);
 
-                return false;
-            }
-
-
-        });
+                        return false;
+                    }
 
 
+                });
 
-    }
+
+
+        }
 
 
 
@@ -102,7 +106,7 @@ public class User_ItemList extends AppCompatActivity implements Admin_item_inter
         switch(view.getId()) {
             case R.id.elect:
                 if(checked)
-                    check("1");
+                       check("1");
 
                 break;
             case R.id.book:
@@ -120,7 +124,7 @@ public class User_ItemList extends AppCompatActivity implements Admin_item_inter
             if (GlobalClass.isNetworkConnected(User_ItemList.this)) {
 
                 WebApicall webApicall = new WebApicall();
-                webApicall.items_list(this, "","1",this);
+                webApicall.items_list(this,CSPreferences.readString(this,"sessioniid"),"1",this);
             } else {
 
                 Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
@@ -132,7 +136,7 @@ public class User_ItemList extends AppCompatActivity implements Admin_item_inter
             if (GlobalClass.isNetworkConnected(User_ItemList.this)) {
 
                 WebApicall webApicall = new WebApicall();
-                webApicall.items_list(this, "","2",this);
+                webApicall.items_list(this, CSPreferences.readString(this,"sessioniid"),"2",this);
             } else {
 
                 Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();

@@ -1,7 +1,5 @@
 package com.example.finalproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,7 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.finalproject.Admin_MainActivity;
+import com.example.finalproject.admin.Admin_MainActivity;
 import com.example.finalproject.interface_api.ApiClient;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.pojo_class.Register_model;
@@ -27,6 +25,7 @@ import com.gun0912.tedpermission.TedPermission;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,27 +57,28 @@ public class LoginActivity extends AppCompatActivity {
         donotaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(LoginActivity.this, SignUp.class);
                 startActivity(i);
             }
         });
+
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 validation();
             }
         });
 
+
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(LoginActivity.this, Forgot_password.class);
                 startActivity(i);
             }
         });
+
 
     }
 
@@ -116,14 +116,14 @@ public class LoginActivity extends AppCompatActivity {
 
             } else if (admin.getText().toString().equals("User")) {
                 if (GlobalClass.isNetworkConnected(LoginActivity.this)) {
-                    HashMap<String, String> hashMap = new HashMap<>();
-                    hashMap.put("email", email.getText().toString());
-                    hashMap.put("password", password.getText().toString());
-                    hashMap.put("usertype", "1");
-                    hashMap.put("device_type", "1");
-                    hashMap.put("device_token", "11111111111111111111");
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put("email", email.getText().toString());
+                hashMap.put("password", password.getText().toString());
+                hashMap.put("usertype", "1");
+                hashMap.put("device_type", "1");
+                hashMap.put("device_token", "11111111111111111111");
 
-                    LoginApi(LoginActivity.this, hashMap);
+                LoginApi(LoginActivity.this, hashMap);
                 } else {
 
                     Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();
@@ -214,7 +214,6 @@ public class LoginActivity extends AppCompatActivity {
         public void onPermissionGranted() {
 
         }
-
         @Override
         public void onPermissionDenied(ArrayList<String> deniedPermissions) {
 

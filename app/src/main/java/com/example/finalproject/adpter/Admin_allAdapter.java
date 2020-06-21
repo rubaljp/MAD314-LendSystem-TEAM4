@@ -1,5 +1,6 @@
 package com.example.finalproject.adpter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -12,17 +13,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
-import com.example.finalproject.Edit_item;
 import com.example.finalproject.GlobalClass;
 import com.example.finalproject.R;
+import com.example.finalproject.admin.Add_items;
+import com.example.finalproject.admin.Edit_item;
 import com.example.finalproject.interface_api.ApiClient;
+import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.pojo_class.Add_item_pojo;
 import com.example.finalproject.pojo_class.AdminItems_list_pojo;
 
 import java.util.ArrayList;
 
-import androidx.recyclerview.widget.RecyclerView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -55,7 +59,7 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
 
-        if (arrayList.get(position).getItemissuedstatus() == 1){
+      if (arrayList.get(position).getItemIssuedStatus() == 1){
             holder.avaliable.setText("Borrowed");
         }else {
             holder.avaliable.setText("Available");
@@ -78,11 +82,21 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, Edit_item.class).putExtra("tital",filter.get(position).getName())
-                        .putExtra("total_item",filter.get(position).getNoOfItems()).putExtra("discraption",filter.get(position).getDescription())
-                        .putExtra("itemid",filter.get(position).getId()).putExtra("edit","edit").
-                                putExtra("item_type",filter.get(position).getType())
-                        .putExtra("image",filter.get(position).getImage()));
+
+                if (arrayList.get(position).getItemIssuedStatus() == 1){
+
+                    dailod(context,position,filter);
+
+                }else {
+                 /*   context.startActivity(new Intent(context, Edit_item.class).putExtra("tital",filter.get(position).getName())
+                            .putExtra("total_item",filter.get(position).getNoOfItems()).putExtra("discraption",filter.get(position).getDescription())
+                            .putExtra("itemid",filter.get(position).getId()).putExtra("edit","edit").
+                                    putExtra("item_type",filter.get(position).getType())
+                            .putExtra("image",filter.get(position).getImage()));
+          */      }
+
+
+
             }
         });
 
@@ -95,15 +109,15 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
 
 
 
-                    RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"), "");
-                    RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),"");
-                    RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), "");
-                    RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), "");
-                    RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"2");
-                    RequestBody item_id = RequestBody.create(MediaType.parse("multipart/form-data"),""+arrayList.get(position).getId());
-                    RequestBody item_type = RequestBody.create(MediaType.parse("multipart/form-data"),"");
+                RequestBody session_id = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+                RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"),"");
+                RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+                RequestBody no_of_items = RequestBody.create(MediaType.parse("multipart/form-data"), "");
+                RequestBody type = RequestBody.create(MediaType.parse("multipart/form-data"),"2");
+                RequestBody item_id = RequestBody.create(MediaType.parse("multipart/form-data"),""+arrayList.get(position).getId());
+                RequestBody item_type = RequestBody.create(MediaType.parse("multipart/form-data"),"");
 
-                    update_del_items(context,session_id,name,description,no_of_items, type,item_id,item_type,null,position);
+                update_del_items(context,session_id,name,description,no_of_items, type,item_id,item_type,null,position);
 
                 } else {
 
@@ -178,7 +192,7 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
 
 
         }
-    }
+        }
 
 
     public void update_del_items(final Context context, RequestBody session_id,
@@ -194,7 +208,7 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
         userpost_responseCall.enqueue(new Callback<Add_item_pojo>() {
             @Override
             public void onResponse(Call<Add_item_pojo> call, Response<Add_item_pojo> response) {
-                // dailoghide(context);
+               // dailoghide(context);
 
                 if (response.body().getStatus() ==  200) {
                     GlobalClass.showtost(context, "" + response.body().getMessage());
@@ -207,7 +221,7 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
             @Override
             public void onFailure(Call<Add_item_pojo> call, Throwable t) {
 
-                //  dailoghide(context);
+              //  dailoghide(context);
                 t.printStackTrace();
                 Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
                 Log.d("dddddd", "onFailure: " + t.getMessage());
@@ -221,5 +235,38 @@ public class Admin_allAdapter extends RecyclerView.Adapter<Admin_allAdapter.View
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, arrayList.size());
     }
-}
+
+
+    private void dailod(Context context,int postion,ArrayList<AdminItems_list_pojo.ItemList> filter){
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.user_detail);
+        dialog .setCancelable(false);
+        ImageView back = dialog.findViewById(R.id.back);
+        TextView username = dialog.findViewById(R.id.username);
+        TextView issuedate = dialog.findViewById(R.id.issuedate);
+        TextView retrundate = dialog.findViewById(R.id.retrundate);
+        TextView type = dialog.findViewById(R.id.type);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        if (filter.get(postion).getType() == 1){
+            type.setText("Electronics");
+        }else {
+            type.setText("Book");
+        }
+
+        username.setText(""+filter.get(postion).getUserList().get(0).getUserName());
+        issuedate.setText(""+filter.get(postion).getIssuedDate());
+        retrundate.setText(""+filter.get(postion).getReturnDate());
+
+
+
+        dialog.show();
+
+    }
+
+    }
 

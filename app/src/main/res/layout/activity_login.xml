@@ -67,7 +67,7 @@
         android:ems="10"
         android:text=""
         android:gravity="center"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +105,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/backgroundbutton"
         android:text="LOGIN"
-        />
+         />
 
     <TextView
         android:id="@+id/donotaccount"
@@ -116,14 +116,14 @@
         android:layout_height="wrap_content"
         android:text="Don't have an account? Signup"/>
 
-    <TextView
-        android:id="@+id/forgot"
-        android:textColor="@color/red"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/forgot"
+            android:textColor="@color/red"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Forget Password"/>
 
 
-</LinearLayout>
+    </LinearLayout>

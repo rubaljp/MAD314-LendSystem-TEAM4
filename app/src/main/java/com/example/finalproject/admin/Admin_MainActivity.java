@@ -1,5 +1,4 @@
-package com.example.finalproject;
-
+package com.example.finalproject.admin;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,7 +75,7 @@ public class Admin_MainActivity extends AppCompatActivity {
                         Logut(Admin_MainActivity.this, CSPreferences.readString(Admin_MainActivity.this,"sessioniid"));
                     }
                 })
-                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.dismiss();
 

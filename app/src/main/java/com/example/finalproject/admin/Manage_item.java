@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,7 +29,7 @@ public class Manage_item extends AppCompatActivity  implements Admin_item_interf
     RecyclerView viewall_item;
     ManageItem manageItemadapter;
     ImageView back;
-    TextView add;
+    ImageView add;
     ArrayList<AdminItems_list_pojo.ItemList> arrayLists = new ArrayList<>();
     SearchView searchView;
 
@@ -66,8 +66,8 @@ public class Manage_item extends AppCompatActivity  implements Admin_item_interf
             }
         });
         if (GlobalClass.isNetworkConnected(Manage_item.this)) {
-            WebApicall webApicall = new WebApicall();
-            webApicall.items_list(this, CSPreferences.readString(this,"sessioniid"),"",this);
+        WebApicall webApicall = new WebApicall();
+        webApicall.items_list(this, CSPreferences.readString(this,"sessioniid"),"",this);
         } else {
 
             Toast.makeText(this, R.string.nointernet, Toast.LENGTH_LONG).show();

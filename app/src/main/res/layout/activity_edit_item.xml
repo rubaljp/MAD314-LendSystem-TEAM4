@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Edit_item"
+    tools:context=".admin.Edit_item"
     android:orientation="vertical">
 
 
@@ -98,13 +98,14 @@
         android:ems="10"
         android:paddingLeft="10dp"
         android:gravity="center|left"
-        android:hint="tital"
+        android:hint="Title"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
     <EditText
+        android:visibility="gone"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -113,6 +114,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:text="1"
         android:paddingLeft="10dp"
         android:gravity="center|left"
         android:hint="No of Item"
@@ -135,7 +137,7 @@
         android:layout_height="80dp"
         android:ems="10"
         android:gravity="center|left|top"
-        android:hint="discraption"
+        android:hint="Description"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -172,7 +174,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@drawable/backgroundbutton"
-        android:text="Submit"
+        android:text="Save"
         />
 
 

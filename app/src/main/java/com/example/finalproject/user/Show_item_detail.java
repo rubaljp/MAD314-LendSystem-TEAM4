@@ -1,7 +1,10 @@
-package com.example.finalproject;
+package com.example.finalproject.user;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -10,13 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.finalproject.GlobalClass;
+import com.example.finalproject.LoginActivity;
+import com.example.finalproject.R;
 import com.example.finalproject.interface_api.CSPreferences;
 import com.example.finalproject.interface_api.WebApicall;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class Show_item_detail extends AppCompatActivity {
 
@@ -40,7 +47,11 @@ public class Show_item_detail extends AppCompatActivity {
         final Bundle extras = getIntent().getExtras();
         tital.setText(extras.getString("tital"));
         discraption.setText(extras.getString("discraption"));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy ");
+        String currentDateandTime = sdf.format(new Date());
 
+      //  Log.d("sdsfsdf",currentDateandTime);
+        issuedate.setText(currentDateandTime);
         Glide.with(this)
                 .load(extras.getString("image"))
                 .fitCenter()
@@ -51,7 +62,7 @@ public class Show_item_detail extends AppCompatActivity {
 
 
 
-        issuedate.setOnClickListener(new View.OnClickListener() {
+        /*issuedate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
@@ -74,7 +85,7 @@ public class Show_item_detail extends AppCompatActivity {
                 datePickerDialog.show();
 
             }
-        });
+        });*/
 
         retrun_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +103,24 @@ public class Show_item_detail extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
 
-                                retrun_date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+
+                                String date = ""+dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                                try {
+                                    Date strDate   = sdf.parse(date);
+                                    if (new Date().after(strDate)) {
+                                        Toast.makeText(Show_item_detail.this, "invalid date", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        retrun_date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                    }
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+
+
 
                             }
                         }, mYear, mMonth, mDay);
