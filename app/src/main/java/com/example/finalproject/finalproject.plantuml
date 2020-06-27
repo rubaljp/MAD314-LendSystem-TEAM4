@@ -98,7 +98,7 @@ title __FINALPROJECT's Class Diagram__\n
   
 
   namespace com.example.finalproject {
-    class com.example.finalproject.Forgot_password {
+    class com.example.finalproject.ForgotPassword {
         ~ email : EditText
         ~ submit : Button
         # onCreate()
@@ -239,7 +239,7 @@ title __FINALPROJECT's Class Diagram__\n
   com.example.finalproject.admin.Edit_item -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.EmptyPage -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.FlashScreen -up-|> androidx.appcompat.app.AppCompatActivity
-  com.example.finalproject.Forgot_password -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.finalproject.ForgotPassword -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.LoginActivity -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
   com.example.finalproject.ResetPassword -up-|> androidx.appcompat.app.AppCompatActivity
